@@ -140,3 +140,38 @@ module.exports.getUserDetails = async function(user_id) {
         return { status: 500, data: err };
     }
 }
+
+//LOGIN USER
+
+module.exports.authUser = async function(uti_name){
+
+    try {
+        let sql = "SELECT * FROM utilizador where utilizador_name = $1";
+
+        let result = await pool.query(sql,[uti_name.utilizador_name]);
+
+        console.log("authUser.result.rows = " + JSON.stringify(result.rows));
+
+        let passwordb = result.rows[0].utilizador_password;
+
+        console.log("authUser.passwordb = " + JSON.stringify(passwordb));
+        console.log("authUser.uti_name.user_password = " + JSON.stringify(uti_name.utilizador_password));
+
+        let valor = (uti_name.utilizador_password == passwordb);
+
+        console.log("authUser.valor = " + JSON.stringify(valor));
+
+        //console.log("[usersModel.getUserDados] dados_utilizador = " + JSON.stringify(dadosfound));
+
+        if(result.rows.length > 0 && valor)
+          return { status: 200, result: result.rows[0]};
+            //return { status: 200, result: result.rows[0]};
+        else return { status: 401, result: {msg:' wrong email or passsword'}};
+        
+    } catch (err) {
+        console.log(err);
+        return { status: 500, result: {msg: 'wrong email or passsword'}};
+    }
+
+
+}

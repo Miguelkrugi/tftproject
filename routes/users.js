@@ -56,5 +56,17 @@ router.get('/details/:idutilizador', async function(req, res, next) {
 
 });
 
+//LOGIN USER
+
+router.post('/loginuser', async function(req, res, next){
+  let utilizador_name = req.body;
+  console.log("username = " + JSON.stringify(utilizador_name));
+
+  let result = await usersModel.authUser(utilizador_name);
+  res.status(result.status).send(result.result);
+
+
+});
+
 
 module.exports = router;

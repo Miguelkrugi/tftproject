@@ -40,23 +40,21 @@
             <header>Login</header>
             <form action="#">
                 <div class="field input-field">
-                    <input type="email" placeholder="Insere o teu username" class="input">
+                    <input type="text" id="fusernamelogin" name="fusernamelogin" placeholder="Insere o teu username" class="input" required>
                 </div>
 
                 <div class="field input-field">
-                    <input type="password" placeholder="Insere a tua password secreta" class="password">
-                    <i class='bx bx-hide eye-icon'></i>
+                    <input type="password" id="fpasswordlogin" name="fpasswordlogin" placeholder="Insere a tua password secreta" class="password" required>
+                   <!--- <i class='bx bx-hide eye-icon'></i>-->
                 </div>
 
                 <div class="form-link">
                     <a href="#" class="forgot-pass">Esqueci-me da password</a>
                 </div>
 
-                <div class="field button-field">
-                    <a href="index.html">
-                    <button>Login</button>
-                    </a>
-                </div>
+                <a href="secondpagetest.html">
+                    <input class="field button-field" type="button" onclick="login()" value="LOGIN" style="border: 0px; background-color: blue; color: white;">
+                </a>
             </form>
 
             <div class="form-link">
@@ -108,6 +106,37 @@
 
 <!-- JavaScript -->
         <script src="javascripts/script.js"></script>
+
+
+        <script>
+
+           async function login() {
+
+              console.log("Função Login chamada...");
+
+              let object = {
+
+                 utilizador_name: document.getElementById("fusernamelogin").value,
+                 utilizador_password: document.getElementById("fpasswordlogin").value
+
+              };
+
+              console.log("Sending the object with values: " + object);
+
+              let authUser = await $.ajax({
+               url: "/users/loginuser",
+               method: "post",
+               data: JSON.stringify(object),
+               contentType: "application/json",
+               dataType: "json",
+
+                });
+
+           }
+
+
+
+        </script>
 
 </body>
 
