@@ -114,6 +114,8 @@
 
               console.log("Função Login chamada...");
 
+              try{
+
               let object = {
 
                  utilizador_name: document.getElementById("fusernamelogin").value,
@@ -130,7 +132,23 @@
                contentType: "application/json",
                dataType: "json",
 
-                });
+            });
+
+                console.log("Verifying user with username: " + authUser.utilizador_name + " and password: " + authUser.utilizador_password);
+
+
+                sessionStorage.setItem('utilizador_id', authUser.utilizador_id);
+                sessionStorage.setItem('utilizador_password', authUser.utilizador_password);
+                sessionStorage.setItem('utilizador_email', authUser.utilizador_email);
+                sessionStorage.setItem('utilizador_dinheiro', authUser.utilizador_dinheiro);
+                sessionStorage.setItem('utilizador_pass', authUser.utilizador_pass);
+               
+                console.log(authUser.utilizador_id);
+        } catch(err){
+
+            console.log(err);
+
+        }
 
            }
 
