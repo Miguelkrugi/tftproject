@@ -12,12 +12,12 @@ router.get('/allgames', async function(req, res, next) {
 });
 
   
-router.get('/allgeneros', async function(req, res, next) {
+/*router.get('/allgeneros', async function(req, res, next) {
 
     let result = await gamesModel.getAllGeneros();
     res.status(result.status).send(result.data);
   
-});
+});*/
 
 router.get('/games/genero/:idgenero', async function(req, res, next) {
 
