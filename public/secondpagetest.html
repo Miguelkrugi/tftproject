@@ -36,7 +36,7 @@
     </div>
 
     <div>
-      <h1 style="position: absolute; margin-left: 73%; margin-top: 3%; font-size: 40px;">Tokens: </h1>
+      <h1 id="tokensuser" style="position: absolute; margin-left: 73%; margin-top: 3%; font-size: 40px;">Tokens: </h1>
       </div>
 
     <div id="jogosrecentes">
@@ -163,9 +163,12 @@
             console.log('The Script will load now.');
 
             var utilizador_name = sessionStorage.getItem("utilizador_name");
+            var utilizador_dinheiro = sessionStorage.getItem("utilizador_dinheiro");
 
 
             document.getElementById("hellouser").innerHTML = "Olá, " + utilizador_name + " !";
+
+            document.getElementById("tokensuser").innerHTML = "Tokens: " + utilizador_dinheiro;
 
          }
 
