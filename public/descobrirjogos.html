@@ -460,7 +460,7 @@ gamesElem.innerHTML = html;
 
 function creategameHTML(jogo){
   
-  return "<div class='selectbox55' id='selectbox55'>" + "<p name='gamename1' id='gamename1' style='text-align: center; font-size: 90%; margin-top: 10%;color:black;'><b>" + jogo.jogo_name + "</b></p>" + "<p name='gamereleased1' id='gamereleased1' style='text-align: center; font-size: 90%; margin-top: 22%;color:black;'>" + jogo.jogo_released + "</p>" + "<p name='rating1' id='rating1' style='text-align: center; font-size: 90%; margin-top: 1%;color:black;'>" + jogo.jogo_rating + "</p>" + "<p name='downloads1' id='downloads1' style='text-align: center; font-size: 90%; margin-top: 1%;color:black;'>" + jogo.jogo_downloads + "</p>" + "<p name='preco1' id='preco1' style='text-align: center; font-size: 90%; margin-top: 3%;color:black;'>" + jogo.jogo_preco + "</p>" + "<button style='margin-top: 5%; margin-left: 7%;'>Comprar Jogo</button>" + "<button>Adicionar á Wishlist</button>" + "</div>"
+  return "<div class='selectbox55' id='selectbox55'>" + "<p name='gamename1' id='gamename1' style='text-align: center; font-size: 90%; margin-top: 10%;color:black;'><b>" + jogo.jogo_name + "</b></p>" + "<p name='gamereleased1' id='gamereleased1' style='text-align: center; font-size: 90%; margin-top: 22%;color:black;'>" + jogo.jogo_released + "</p>" + "<p name='rating1' id='rating1' style='text-align: center; font-size: 90%; margin-top: 1%;color:black;'>" + jogo.jogo_rating + "</p>" + "<p name='downloads1' id='downloads1' style='text-align: center; font-size: 90%; margin-top: 1%;color:black;'>" + jogo.jogo_downloads + "</p>" + "<p name='preco1' id='preco1' style='text-align: center; font-size: 90%; margin-top: 3%;color:black;'>" + jogo.jogo_preco + "</p>" + "<button style='margin-top: 5%; margin-left: 7%;'>Comprar Jogo</button>" + "<button onclick='addtowishlist()'>Adicionar á Wishlist</button>" + "</div>"
  
   // return "<div class='selectbox5' id='selectbox55'>" + recipe.receita_titulo + "</div>";
 
@@ -488,6 +488,12 @@ function filterFunction() {
       a[i].style.display = "none";
     }
   }
+}
+
+async function addtowishlist(){
+
+   console.log("Wishlist function working :D");
+
 }
 
            /* When the user clicks on the button,
