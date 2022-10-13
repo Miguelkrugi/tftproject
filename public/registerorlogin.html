@@ -54,7 +54,7 @@
                     <a href="#" class="forgot-pass">Esqueci-me da password</a>
                 </div>
 
-                <a href="#">
+                <a href="secondpagetest.html">
                     <input class="field button-field" type="button" onclick="login()" value="LOGIN" style="border: 0px; background-color: blue; color: white;">
                 </a>
             </form>
@@ -140,6 +140,7 @@
 
 
                 sessionStorage.setItem('utilizador_id', authUser.utilizador_id);
+                sessionStorage.setItem('utilizador_name', authUser.utilizador_name);
                 sessionStorage.setItem('utilizador_password', authUser.utilizador_password);
                 sessionStorage.setItem('utilizador_email', authUser.utilizador_email);
                 sessionStorage.setItem('utilizador_dinheiro', authUser.utilizador_dinheiro);
