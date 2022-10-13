@@ -460,6 +460,13 @@ height: 100%;
   position: absolute;
 }
 
+#organize {
+  width: 130%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+}
 
 
 
