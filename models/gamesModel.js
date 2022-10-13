@@ -7,7 +7,7 @@ var salt = 10;
 
 module.exports.getGames = async function() {
     try {
-        let sql = "select * from jogo order by random() limit 3"; //FALTA ALTERAR O LIMITE PARA 50 (TEREMOS 150/200 JOGOS HARDCODED NO TOTAL)
+        let sql = "select * from jogo order by random() limit 50"; //FALTA ALTERAR O LIMITE PARA 50 (TEREMOS 150/200 JOGOS HARDCODED NO TOTAL)
         let result = await pool.query(sql);
         let games = result.rows;
         console.log("[gamesModel.getGames] games = " + JSON.stringify(games));

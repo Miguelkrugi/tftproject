@@ -390,6 +390,12 @@
  
          </nav>
 
+         <div id="organize"> <!-- DIV PARA REPRESENTAR OS JOGOS (EXIBIR OS JOGOS) -->
+
+            
+
+         </div>
+
          <script>
 
           //GET THE LOGGED USER
@@ -403,7 +409,56 @@
 
             console.log(utilizador_name);
 
+            //GET DOS JOGOS
+
+            async function getGames(){
+
+            // let recipeName = document.getElementById("nome1")
+               let gamesElem = document.getElementById("organize");
+               var utilizador_id = sessionStorage.getItem("utilizador_id");
+               console.log("setItem->userId = " + utilizador_id);
+
+             try{
+
+              let games = await $.ajax({
+
+              url: "/games/allgames/",
+              method: "get",
+              dataType: "json",
+
+             });
+
+             console.log("[utilizador] utilizador = " + JSON.stringify(games));
+
+            let html = "";
+
+            for(let game of games){
+               console.log("Jogo: " + game);
+               html += creategameHTML(game);
+            }
+
+            console.log("OBTEVE");
+         //  recipeName.innerHTML = html;
+
+            gamesElem.innerHTML = html;
+
+
+            } catch(err){
+               console.log(err);
+            }
+          }
+
+          function creategameHTML(jogo){
+  
+             return "<div class='selectbox55' id='selectbox55'>" + "<p name='gamename1' id='gamename1' style='text-align: center; font-size: 90%; margin-top: 10%;color:black;'><b>" + jogo.jogo_name + "</b></p>" + "<p name='gamereleased1' id='gamereleased1' style='text-align: center; font-size: 90%; margin-top: 22%;color:black;'>" + jogo.jogo_released + "</p>" + "<p name='rating1' id='rating1' style='text-align: center; font-size: 90%; margin-top: 1%;color:black;'>" + jogo.jogo_rating + "</p>" + "<p name='downloads1' id='downloads1' style='text-align: center; font-size: 90%; margin-top: 1%;color:black;'>" + jogo.jogo_downloads + "</p>" + "<p name='preco1' id='preco1' style='text-align: center; font-size: 90%; margin-top: 3%;color:black;'>" + jogo.jogo_preco + "</p>" + "<button style='margin-top: 5%; margin-left: 7%;'>Comprar Jogo</button>" + "<button>Adicionar á Wishlist</button>" + "</div>"
+            
+             // return "<div class='selectbox5' id='selectbox55'>" + recipe.receita_titulo + "</div>";
+
+            /*<p name="criador1" id="criador1" style="text-align: center;font-size: 90%; margin-top: 2%;">CRIADOR DA RECEITA </p>*/
+
            }
+
+         }
 
            /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
@@ -493,6 +548,9 @@ function filterFunction4() {
   }
 }
 
+    
+
+    
 
          </script>
 

@@ -445,3 +445,21 @@ height: 100%;
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
+
+/*SELECT BOX (JOGO)*/
+
+.selectbox55 {
+  width: 18%;
+  height: 38%;
+  border: 1px solid white;
+  border-radius: 6%;
+  cursor: pointer;
+  color: black;
+  background-color: white;
+  padding: 5px;
+  position: absolute;
+}
+
+
+
+

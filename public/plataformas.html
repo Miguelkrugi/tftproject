@@ -202,6 +202,46 @@
 
          <script>
 
+          //FUNCAO DE QUANDO A PAGINA ABRIR. É EXTREMAMENTE IMPORTANTE ADAPTAR O ESTILO DOS BOTÕES AS PLATAFORMAS QUE JÁ SÃO SEGUIDAS OU NÃO.
+
+          window.onload = function adaptarBotoes() {
+
+            var utilizador_name = sessionStorage.getItem("utilizador_name");
+            var utilizador_dinheiro = sessionStorage.getItem("utilizador_dinheiro");
+            var utilizador_email = sessionStorage.getItem("utilizador_email");
+            var utilizador_id = sessionStorage.getItem("utilizador_id");
+
+            //COMO FUNCIONA A ADAPTAÇÃO ? -> SÃO BUSCADOS AS PLATAFORMAS SEGUIDAS POR UM USER. OS RESULTADOS OBTIDOS ADAPTAM O BOTÃO PARA O 'Deixar de seguir'. Os restantes adaptam o botão 'Seguir'.
+
+            document.getElementById("followpcandlaptop").style.visibility = "hidden";
+
+            document.getElementById("unfollowpcandlaptop").style.visibility = "hidden";
+
+            document.getElementById("followplaystation").style.visibility = "hidden";
+
+                document.getElementById("unfollowplaystation").style.visibility = "hidden";
+
+                document.getElementById("followxboxone360").style.visibility = "hidden";
+
+            document.getElementById("unfollowxboxone360").style.visibility = "hidden";
+
+            document.getElementById("followxboxseriesxs").style.visibility = "hidden";
+
+                document.getElementById("unfollowxboxseriesxs").style.visibility = "hidden";
+
+                document.getElementById("followmacosios").style.visibility = "hidden";
+
+                document.getElementById("unfollowmacosios").style.visibility = "hidden";
+
+                document.getElementById("followandroid").style.visibility = "hidden";
+
+                document.getElementById("unfollowandroid").style.visibility = "hidden";
+
+
+                //A TERMINAR...
+
+          }
+
           //FOLLOW AND UNFOLLOW BUTTON CLICKS
 
               function followpcandlaptop(){
