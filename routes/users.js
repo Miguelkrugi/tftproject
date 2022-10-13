@@ -65,7 +65,6 @@ router.post('/loginuser', async function(req, res, next){
   let result = await usersModel.authUser(utilizador_name);
   res.status(result.status).send(result.result);
 
-
 });
 
 

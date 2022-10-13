@@ -57,7 +57,8 @@
             <div id="pcfunctions" style="position: absolute; margin-left: 12%; margin-top: -6.3%;">
 
               <h2>PC & Laptop</h2>
-              <button style="width: 30%; font-size: 17px; color: white; background-color: lightblue; border-radius: 13px; margin-left: 170%; margin-top: -8%;" >Seguir <img src="./images/add.png" style="width: 9%; height: 9%;"></button>
+              <button id="followpcandlaptop" onclick="followpcandlaptop()" style="width: 30%; font-size: 17px; color: white; background-color: lightblue; border-radius: 13px; margin-left: 170%; margin-top: -8%;" >Seguir <img src="./images/add.png" style="width: 9%; height: 9%;"></button>
+              <button id="unfollowpcandlaptop" onclick="unfollowpcandlaptop()" style="width: 30%; font-size: 17px; color: white; background-color: orange; border-radius: 13px; margin-left: 170%; margin-top: -8%; position: absolute;" >Deixar de Seguir <img src="./images/delete-friend.png" style="width: 9%; height: 9%;"></button>
 
             </div>
 
@@ -66,7 +67,8 @@
             <div id="playstationfunctions" style="position: absolute; margin-left: 12%; margin-top: 2.3%;">
 
               <h2>PlayStation</h2>
-              <button style="width: 30%; font-size: 17px; color: white; background-color: lightblue; border-radius: 13px; margin-left: 170%; margin-top: -8%;" >Seguir <img src="./images/add.png" style="width: 9%; height: 9%;"></button>
+              <button id="followplaystation" onclick="followplaystation()" style="width: 30%; font-size: 17px; color: white; background-color: lightblue; border-radius: 13px; margin-left: 170%; margin-top: -8%;" >Seguir <img src="./images/add.png" style="width: 9%; height: 9%;"></button>
+              <button id="unfollowplaystation" onclick="unfollowplaystation()" style="width: 30%;  font-size: 17px; color: white; background-color: orange; border-radius: 13px; margin-left: 170%; margin-top: -8%; position: absolute;" >Deixar de Seguir <img src="./images/delete-friend.png" style="width: 9%; height: 9%;"></button>
 
             </div>
 
@@ -76,7 +78,8 @@
             <div id="xboxfunctions" style="position: absolute; margin-left: 12%; margin-top: 10.5%;">
 
               <h2>Xbox One & 360</h2>
-              <button style="width: 30%; font-size: 17px; color: white; background-color: lightblue; border-radius: 13px; margin-left: 170%; margin-top: -8%;" >Seguir <img src="./images/add.png" style="width: 9%; height: 9%;"></button>
+              <button id="followxboxone360" onclick="followxboxone360()" style="width: 30%; font-size: 17px; color: white; background-color: lightblue; border-radius: 13px; margin-left: 170%; margin-top: -8%;" >Seguir <img src="./images/add.png" style="width: 9%; height: 9%;"></button>
+              <button id="unfollowxboxone360" onclick="unfollowxboxone360()" style="width: 30%;  font-size: 17px; color: white; background-color: orange; border-radius: 13px; margin-left: 170%; margin-top: -8%; position: absolute;" >Deixar de Seguir <img src="./images/delete-friend.png" style="width: 9%; height: 9%;"></button>
 
             </div>
 
@@ -85,7 +88,8 @@
             <div id="xboxseriesxandsfunctions" style="position: absolute; margin-left: 12%; margin-top: 22%;">
 
               <h2>Xbox Series X/S</h2>
-              <button style="width: 30%; font-size: 17px; color: white; background-color: lightblue; border-radius: 13px; margin-left: 170%; margin-top: -8%;" >Seguir <img src="./images/add.png" style="width: 9%; height: 9%;"></button>
+              <button id="followxboxseriesxs" onclick="followxboxseriesxs()" style="width: 30%; font-size: 17px; color: white; background-color: lightblue; border-radius: 13px; margin-left: 170%; margin-top: -8%;" >Seguir <img src="./images/add.png" style="width: 9%; height: 9%;"></button>
+              <button id="unfollowxboxseriesxs" onclick="unfollowxboxseriesxs()" style="width: 30%;  font-size: 17px; color: white; background-color: orange; border-radius: 13px; margin-left: 170%; margin-top: -8%; position: absolute;" >Deixar de Seguir <img src="./images/delete-friend.png" style="width: 9%; height: 9%;"></button>
 
             </div>
 
@@ -95,7 +99,8 @@
             <div id="macosiosfunctions" style="position: absolute; margin-left: 12%; margin-top: 32%;">
 
               <h2>MacOS / iOS</h2>
-              <button style="width: 30%; font-size: 17px; color: white; background-color: lightblue; border-radius: 13px; margin-left: 170%; margin-top: -8%;" >Seguir <img src="./images/add.png" style="width: 9%; height: 9%;"></button>
+              <button id="followmacosios" onclick="followmacosios()" style="width: 30%; font-size: 17px; color: white; background-color: lightblue; border-radius: 13px; margin-left: 170%; margin-top: -8%;" >Seguir <img src="./images/add.png" style="width: 9%; height: 9%;"></button>
+              <button id="unfollowmacosios" onclick="unfollowmacosios()" style="width: 30%; font-size: 17px; color: white; background-color: orange; border-radius: 13px; margin-left: 170%; margin-top: -8%; position: absolute;" >Deixar de Seguir <img src="./images/delete-friend.png" style="width: 9%; height: 9%;"></button>
 
             </div>
 
@@ -104,7 +109,8 @@
             <div id="androidfunctions" style="position: absolute; margin-left: 12%; margin-top: 41%;">
 
               <h2>Android</h2>
-              <button style="width: 30%; font-size: 17px; color: white; background-color: lightblue; border-radius: 13px; margin-left: 170%; margin-top: -8%;" >Seguir <img src="./images/add.png" style="width: 9%; height: 9%;"></button>
+              <button id="followandroid" onclick="followandroid()" style="width: 30%; font-size: 17px; color: white; background-color: lightblue; border-radius: 13px; margin-left: 170%; margin-top: -8%;" >Seguir <img src="./images/add.png" style="width: 9%; height: 9%;"></button>
+              <button id="unfollowandroid" onclick="unfollowandroid()" style="width: 30%; font-size: 17px; color: white; background-color: orange; border-radius: 13px; margin-left: 170%; margin-top: -8%; position: absolute;" >Deixar de Seguir <img src="./images/delete-friend.png" style="width: 9%; height: 9%;"></button>
 
             </div>
 
@@ -195,6 +201,112 @@
          </nav>
 
          <script>
+
+          //FOLLOW AND UNFOLLOW BUTTON CLICKS
+
+              function followpcandlaptop(){
+
+                document.getElementById("followpcandlaptop").style.visibility = "hidden";
+
+                document.getElementById("unfollowpcandlaptop").style.visibility = "visible";
+
+
+              }
+
+              function unfollowpcandlaptop(){
+
+                document.getElementById("unfollowpcandlaptop").style.visibility = "hidden";
+
+                document.getElementById("followpcandlaptop").style.visibility = "visible";
+
+
+              }
+
+              function followplaystation(){
+
+                document.getElementById("followplaystation").style.visibility = "hidden";
+
+                document.getElementById("unfollowplaystation").style.visibility = "visible";
+
+              }
+
+              function unfollowplaystation(){
+
+                document.getElementById("followplaystation").style.visibility = "visible";
+
+                document.getElementById("unfollowplaystation").style.visibility = "hidden";
+
+
+              }
+
+
+              function followxboxone360(){
+
+                //DEFINIR OS POSTS PARA O CLIQUE
+
+                document.getElementById("followxboxone360").style.visibility = "hidden";
+
+                document.getElementById("unfollowxboxone360").style.visibility = "visible";
+
+              }
+
+              function unfollowxboxone360(){
+
+                document.getElementById("followxboxone360").style.visibility = "visible";
+
+                document.getElementById("unfollowxboxone360").style.visibility = "hidden";
+
+              }
+
+              function followxboxseriesxs(){
+
+                document.getElementById("followxboxseriesxs").style.visibility = "hidden";
+
+                document.getElementById("unfollowxboxseriesxs").style.visibility = "visible";
+
+              }
+
+              function unfollowxboxseriesxs(){
+
+                document.getElementById("followxboxseriesxs").style.visibility = "visible";
+
+                document.getElementById("unfollowxboxseriesxs").style.visibility = "hidden";
+
+              }
+
+              function followmacosios(){
+
+                document.getElementById("followmacosios").style.visibility = "hidden";
+
+                document.getElementById("unfollowmacosios").style.visibility = "visible";
+
+              }
+
+              function unfollowmacosios(){
+
+                document.getElementById("followmacosios").style.visibility = "visible";
+
+                document.getElementById("unfollowmacosios").style.visibility = "hidden";
+
+              }
+
+              function followandroid(){
+
+                document.getElementById("followandroid").style.visibility = "hidden";
+
+                document.getElementById("unfollowandroid").style.visibility = "visible";
+
+              }
+
+              function unfollowandroid(){
+
+                document.getElementById("followandroid").style.visibility = "visible";
+
+                document.getElementById("unfollowandroid").style.visibility = "hidden";
+
+              }
+
+              
 
            /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
