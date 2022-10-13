@@ -392,6 +392,19 @@
 
          <script>
 
+          //GET THE LOGGED USER
+
+          window.onload = function exampleFunction() {
+            console.log('The Script will load now.');
+
+            var utilizador_name = sessionStorage.getItem("utilizador_name");
+            var utilizador_dinheiro = sessionStorage.getItem("utilizador_dinheiro");
+            var utilizador_email = sessionStorage.getItem("utilizador_email");
+
+            console.log(utilizador_name);
+
+           }
+
            /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
 function myFunction() {
