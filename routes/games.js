@@ -63,14 +63,7 @@ router.get('/games/lancamento/antigos', async function(req, res, next) {
 
 
 
-  //ADICIONAR JOGO Á WISHLIST DO UTILIZADOR 
 
-  router.post('/insertnewwishlistgame', async function(req, res, next) {
-    let newWishlistGame = req.body;
-    //console.log("[usersRoutes] Saving user " + JSON.stringify(newUser));
-    let result = await gamesModel.saveGameWishlist(newWishlistGame);
-    res.status(result.status).send(result.result);
-  });
 
   //POST DE WISHLIST  (REFAZER)
 
