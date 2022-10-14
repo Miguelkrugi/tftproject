@@ -61,23 +61,14 @@ router.get('/games/lancamento/antigos', async function(req, res, next) {
 
 });
 
-//ADICIONAR JOGO Á WISHLIST DO UTILIZADOR 
 
-router.post('/addgamewishlist/:idutilizador/:idjogo', async function(req, res, next) {
-    let utilizador_id = req.params.idutilizador;
-    let jogo_id = req.params.idjogo;
-    //let newBuyGame = req.body;
-    //console.log("[usersRoutes] Saving user " + JSON.stringify(newUser));
-    let result = await gamesModel.saveGameWishlist(utilizador_id, jogo_id);
-    res.status(result.status).send(result.result);
-  });
 
   //ADICIONAR JOGO Á WISHLIST DO UTILIZADOR 
 
   router.post('/insertnewwishlistgame', async function(req, res, next) {
     let newWishlistGame = req.body;
     //console.log("[usersRoutes] Saving user " + JSON.stringify(newUser));
-    let result = await gamesModel.saveWishlistGame(newWishlistGame);
+    let result = await gamesModel.saveGameWishlist(newWishlistGame);
     res.status(result.status).send(result.result);
   });
 
