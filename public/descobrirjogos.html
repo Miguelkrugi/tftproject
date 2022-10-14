@@ -497,6 +497,7 @@ async function addtowishlist(jogo){
    console.log("Wishlist function working :D");
    console.log("ID do Jogo: " + jogo.jogo_id);
    var utilizador_id = sessionStorage.getItem("utilizador_id");
+   var jogo_id = parseInt(jogo.jogo_id);
    console.log("ID do Utilizador: " + utilizador_id);
 
    try {
@@ -504,7 +505,7 @@ async function addtowishlist(jogo){
  let data = {
 
    wishlist_user_id: utilizador_id,
-   wishlist_jogo_id: jogo.jogo_id
+   wishlist_jogo_id: jogo_id
 
  }
 
