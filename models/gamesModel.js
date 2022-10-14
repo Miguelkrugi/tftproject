@@ -150,9 +150,9 @@ module.exports.getGamesFromWishlist = async function(utilizador_id) {
 
 
 
-module.exports.deleteWishlistGame = async function(utilizador_id, jogo_id) {
+module.exports.deleteWishlistGame = async function(user_id, game_id) {
     try {
-        let sql = "DELETE FROM wishlist WHERE wishlist.wishlist_user_id = " + utilizador_id + " AND wishlist.wishlist_jogo_id = " + jogo_id;
+        let sql = "DELETE FROM wishlist WHERE wishlist.wishlist_user_id = " + user_id + " AND wishlist.wishlist_jogo_id = " + game_id;
         let result = await pool.query(sql);
         let gamesfound = result.rows;
         console.log("[gamesModel.getGamesFromGenre] gameswishlist = " + JSON.stringify(gamesfound));
