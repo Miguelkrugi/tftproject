@@ -88,12 +88,11 @@ router.get('/games/lancamento/antigos', async function(req, res, next) {
 
 //DELETE WISHLIST GAME
 
-router.delete('/deletewishlist/:idutilizador/:idjogo', async function(req, res, next){
+router.delete('/deletewishlist/:idwishlist', async function(req, res, next){
 
-  let utilizador_id = req.params.idutilizador;
-  let jogo_id = req.params.idjogo;
-  console.log("[artigosRoutes] Deleting wishlist game with id: " + jogo_id + " from user with id: " + utilizador_id);
-  let result = await gamesModel.deleteWishlistGame(utilizador_id, jogo_id);
+  let wishlist_id = req.params.idwishlist;
+  console.log("[artigosRoutes] Deleting wishlist game with id: " + wishlist_id);
+  let result = await gamesModel.deleteWishlistGame(wishlist_id);
   res.status(result.status).send(result.data);
 
 });
