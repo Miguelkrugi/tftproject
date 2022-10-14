@@ -24,6 +24,8 @@ module.exports.saveGameWishlist = async function(game) {
             "VALUES ($1, $2) " +
             "RETURNING wishlist_id";
 
+
+          console.log(game.wishlist_user_id + "|" + game.wishlist_jogo_id)
             //console.log(user.user_name + "|" + user.user_password + "|" + user.user_morada + "|" + user.user_email + "|" + user.user_points + "|" + user.user_admin + "|" + user.user_pt + "|" + user.user_nutri);
         let result = await pool.query(sql, [game.wishlist_user_id, game.wishlist_jogo_id]);
         
