@@ -133,7 +133,9 @@ module.exports.saveGameWishlist = async function(game) {
 }
 
 
-module.exports.getGamesWishlist = async function(utilizador_id) {
+
+
+module.exports.getGamesFromWishlist = async function(utilizador_id) {
     try {
         let sql = "SELECT wishlist.wishlist_id, wishlist.wishlist_user_id, wishlist.wishlist_jogo_id, utilizador.utilizador_name, utilizador.utilizador_id, jogo.jogo_id ,jogo.jogo_name, jogo.jogo_rating, jogo.jogo_downloads FROM wishlist INNER JOIN utilizador ON utilizador.utilizador_id = wishlist.wishlist_user_id INNER JOIN jogo ON jogo.jogo_id = wishlist.wishlist_jogo_id WHERE utilizador.utilizador_id = " + utilizador_id;
         let result = await pool.query(sql);

@@ -74,6 +74,18 @@ router.get('/games/lancamento/antigos', async function(req, res, next) {
     res.status(result.status).send(result.result);
   });
 
+  //GET WISHLIST GAMES
+
+
+  router.get('/games/wishlist/:idutilizador', async function(req, res, next) {
+
+    let idutilizador = req.params.idutilizador;
+    console.log("Retrieving games with id " + idutilizador);
+    let result = await gamesModel.getGamesFromWishlist(idutilizador);
+    res.status(result.status).send(result.data);
+
+});
+
 
 //ADICIONAR JOGO AOS FAVORITOS DO UTILIZADOR (TERMINAR AMANHÃ)
 
