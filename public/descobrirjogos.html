@@ -461,7 +461,9 @@ gamesElem.innerHTML = html;
 
 function creategameHTML(jogo){
   
-  return "<div class='selectbox55' id='selectbox55'>" + "<p name='gamename1' id='gamename1' style='text-align: center; font-size: 90%; margin-top: 10%;color:black;'><b>" + jogo.jogo_name + "</b></p>" + "<p name='gamereleased1' id='gamereleased1' style='text-align: center; font-size: 90%; margin-top: 22%;color:black;'>" + jogo.jogo_released + "</p>" + "<p name='rating1' id='rating1' style='text-align: center; font-size: 90%; margin-top: 1%;color:black;'>" + jogo.jogo_rating + "</p>" + "<p name='downloads1' id='downloads1' style='text-align: center; font-size: 90%; margin-top: 1%;color:black;'>" + jogo.jogo_downloads + "</p>" + "<p name='preco1' id='preco1' style='text-align: center; font-size: 90%; margin-top: 3%;color:black;'>" + jogo.jogo_preco + "</p>" + "<button style='margin-top: 5%; margin-left: 7%;'>Comprar Jogo</button>" + "<button onclick='addtowishlist('" + JSON.stringify(jogo) + "'>Adicionar á Wishlist</button>" + "</div>"
+  return "<div class='selectbox55' id='selectbox55'>" + "<p name='gamename1' id='gamename1' style='text-align: center; font-size: 90%; margin-top: 10%;color:black;'><b>" + jogo.jogo_name + "</b></p>" + "<p name='gamereleased1' id='gamereleased1' style='text-align: center; font-size: 90%; margin-top: 22%;color:black;'>" + jogo.jogo_released + "</p>" + "<p name='rating1' id='rating1' style='text-align: center; font-size: 90%; margin-top: 1%;color:black;'>" + jogo.jogo_rating + "</p>" + "<p name='downloads1' id='downloads1' style='text-align: center; font-size: 90%; margin-top: 1%;color:black;'>" + jogo.jogo_downloads + "</p>" + 
+    "<p name='preco1' id='preco1' style='text-align: center; font-size: 90%; margin-top: 3%;color:black;'>" + jogo.jogo_preco + "</p>" + 
+    "<button style='margin-top: 5%; margin-left: 7%;'>Comprar Jogo</button>" + "<button onclick='addtowishlist('" + JSON.stringify(jogo) + "'>Adicionar á Wishlist</button>" + "</div>"
  
   // return "<div class='selectbox5' id='selectbox55'>" + recipe.receita_titulo + "</div>";
 
@@ -492,30 +494,28 @@ function filterFunction() {
 }
 
 //FUNCAO DE ADICIONAR Á WISHLIST
-async function addtowishlist(jogostr){
+async function addtowishlist(jogo){
 
-   let jogo = JSON.parse(jogostr);
+
    console.log("Wishlist function working :D");
    console.log("ID do Jogo: " + jogo.jogo_id);
    var utilizador_id = sessionStorage.getItem("utilizador_id");
-   var user_id = parseInt(utilizador_id);
-   var game_id = parseInt(jogo.jogo_id);
-   var id_game_default =  6;
+   var jogo_id = jogo.jogo_id;
    console.log("ID do Utilizador: " + utilizador_id);
 
    try {
 
  let data = {
 
-   wishlist_user_id: user_id,
-  // wishlist_jogo_id: jogo_id
-  wishlist_jogo_id: game_id
+   wishlist_user_id: utilizador_id,
+   // wishlist_jogo_id: jogo_id
+   wishlist_jogo_id: jogo_id
 
  }
 
  let newWishlistGame = await $.ajax({
 
-     url: "/games/insertnewwishlistgame/",
+     url: "/games/insertnewwishlistgame",
      method: "POST",
      data: JSON.stringify(data),
      contentType: "application/json",
