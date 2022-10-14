@@ -492,8 +492,9 @@ function filterFunction() {
 }
 
 //FUNCAO DE ADICIONAR Á WISHLIST
-async function addtowishlist(jogo){
+async function addtowishlist(jogostr){
 
+   let jogo = JSON.parse(jogostr);
    console.log("Wishlist function working :D");
    console.log("ID do Jogo: " + jogo.jogo_id);
    var utilizador_id = sessionStorage.getItem("utilizador_id");
