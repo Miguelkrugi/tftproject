@@ -72,6 +72,15 @@ router.post('/addgamewishlist/:idutilizador/:idjogo', async function(req, res, n
     res.status(result.status).send(result.result);
   });
 
+  //ADICIONAR JOGO Á WISHLIST DO UTILIZADOR 
+
+  router.post('/insertnewwishlistgame', async function(req, res, next) {
+    let newWishlistGame = req.body;
+    //console.log("[usersRoutes] Saving user " + JSON.stringify(newUser));
+    let result = await gamesModel.saveWishlistGame(newWishlistGame);
+    res.status(result.status).send(result.result);
+  });
+
 
 //ADICIONAR JOGO AOS FAVORITOS DO UTILIZADOR (TERMINAR AMANHÃ)
 

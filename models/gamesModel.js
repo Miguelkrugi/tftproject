@@ -3,6 +3,38 @@ var pool = require("./connection");
 var brcypt = require('bcrypt');
 var salt = 10;
 
+// ADICIONAR JOGO Á WISHLIST
+
+module.exports.saveGameWishlist = async function(game) {
+    //console.log("[usersModel.saveUser] user = " + JSON.stringify(user));
+     //checks all fields needed and ignores other fields
+    /*if (typeof user != "object" || failUser(user)) {
+        if (user.errMsg)
+            return { status: 400, data: { msg: user.errMsg } };
+        else
+            return { status: 400, data: { msg: "Malformed data" } };
+    }
+    let password = brcypt.hashSync(user.user_password, salt);*/
+    try {
+
+        let sql =
+            "INSERT " +
+            "INTO wishlist " +
+            "(wishlist_user_id, wishlist_jogo_id) " +
+            "VALUES ($1, $2) " +
+            "RETURNING wishlist_id";
+
+            //console.log(user.user_name + "|" + user.user_password + "|" + user.user_morada + "|" + user.user_email + "|" + user.user_points + "|" + user.user_admin + "|" + user.user_pt + "|" + user.user_nutri);
+        let result = await pool.query(sql, [game.wishlist_user_id, game.wishlist_jogo_id]);
+        
+        return { status: 200, result: result };
+    } catch (err) {
+
+        console.log(err);
+        return { status: 500, result: err };
+    }
+}
+
 //OBTER JOGOS ALEATÓRIOS
 
 module.exports.getGames = async function() {
