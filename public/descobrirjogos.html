@@ -508,7 +508,7 @@ async function addtowishlist(jogo_id){
 
  let newWishlistGame = await $.ajax({
 
-     url: "/games/addgamewishlist/",
+     url: "/games/insertnewwishlistgame/",
      method: "post",
      data: JSON.stringify(data),
      contentType: "application/json",
