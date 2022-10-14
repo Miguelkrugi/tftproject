@@ -77,7 +77,7 @@ router.get('/games/lancamento/antigos', async function(req, res, next) {
   //GET WISHLIST GAMES
 
 
-  router.get('/games/wishlist/:idutilizador', async function(req, res, next) {
+  router.get('/wishlist/:idutilizador', async function(req, res, next) {
 
     let idutilizador = req.params.idutilizador;
     console.log("Retrieving games with id " + idutilizador);
