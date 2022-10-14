@@ -148,9 +148,11 @@ module.exports.getGamesFromWishlist = async function(utilizador_id) {
     }
 }
 
+
+
 module.exports.deleteWishlistGame = async function(utilizador_id, jogo_id) {
     try {
-        let sql = "DELETE FROM wishlist WHERE wishlist_user_id = " + utilizador_id + " AND wishlist_jogo_id = " + jogo_id;
+        let sql = "DELETE FROM wishlist WHERE wishlist.wishlist_user_id = " + utilizador_id + " AND wishlist.wishlist_jogo_id = " + jogo_id;
         let result = await pool.query(sql);
         let gamesfound = result.rows;
         console.log("[gamesModel.getGamesFromGenre] gameswishlist = " + JSON.stringify(gamesfound));
