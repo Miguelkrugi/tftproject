@@ -423,6 +423,45 @@
 
          }
 
+         //FUNCAO DE FILTRO POR GENERO
+
+async function filterbygenre(genre_id){
+
+  let gamesElem = document.getElementById("organize");
+
+console.log("ID do genero: " + genre_id);
+
+try{
+
+  let games = await $.ajax({
+
+    url: "/games/games/genero/" + genre_id,
+    method: "get",
+    dataType: "json",
+
+  });
+
+  console.log("[utilizador] utilizador = " + JSON.stringify(games));
+
+  let html = "";
+
+for(let game of games){
+ console.log("Jogo: " + game);
+ html += creategameHTML(game);
+}
+
+console.log("OBTEVE");
+//  recipeName.innerHTML = html;
+
+gamesElem.innerHTML = html;
+
+
+} catch(err){
+ console.log(err);
+}
+
+}
+
          async function getGames(){
 
 console.log("Obtendo os jogos")
@@ -494,15 +533,7 @@ function filterFunction() {
   }
 }
 
-//FUNCAO DE FILTRO POR GENERO
 
-async function filterbygenre(genre_id){
-
-   console.log("ID do genero: " + genre_id);
-
-
-
-}
 
 //FUNCAO DE ADICIONAR Á WISHLIST
 async function addtowishlist(jogo){
