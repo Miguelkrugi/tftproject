@@ -40,109 +40,109 @@
     <button onclick="myFunction()" class="dropbtn">Género</button>
     <div id="myDropdown" class="dropdown-content">
       <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-      <a href="#about">Ação
+      <a href="#about" onclick="filterbygenre(1)" id="1">Ação
 
         <i class="fa-solid fa-gun"></i>
 
       </a>
-      <a href="#base">Indie
+      <a href="#base" onclick="filterbygenre(2)" id="2">Indie
 
         <i class="fa-solid fa-face-smile"></i>
 
       </a>
-      <a href="#blog">Aventura
+      <a href="#blog" onclick="filterbygenre(3)" id="3">Aventura
 
         <i class="fa-solid fa-map"></i>
 
       </a>
-      <a href="#contact">RPG
+      <a href="#contact" onclick="filterbygenre(4)" id="4">RPG
 
         <i class="fa-solid fa-gem"></i>
 
       </a>
-      <a href="#custom">Estratégia
+      <a href="#custom" onclick="filterbygenre(5)" id="5">Estratégia
 
         <i class="fa-solid fa-chess"></i>
 
       </a>
-      <a href="#support">Tiro
+      <a href="#support" onclick="filterbygenre(6)" id="6">Tiro
 
         <i class="fa-solid fa-bullseye"></i>
 
       </a>
-      <a href="#tools">Casual
+      <a href="#tools" onclick="filterbygenre(7)" id="7">Casual
 
         <i class="fa-solid fa-gamepad"></i>
 
       </a>
 
-      <a href="#tools">Simulador
+      <a href="#tools" onclick="filterbygenre(8)" id="8">Simulador
 
         <i class="fa-solid fa-vr-cardboard"></i>
 
       </a>
 
-      <a href="#tools">Puzzle
+      <a href="#tools" onclick="filterbygenre(9)" id="9">Puzzle
 
         <i class="fa-solid fa-puzzle-piece"></i>
 
       </a>
 
-      <a href="#tools">Arcade
+      <a href="#tools" onclick="filterbygenre(10)" id="10">Arcade
 
         <i class="fa-solid fa-ghost"></i>
 
       </a>
 
-      <a href="#tools">Plataforma
+      <a href="#tools" onclick="filterbygenre(11)" id="11">Plataforma
 
         <i class="fa-solid fa-compass"></i>
 
       </a>
 
-      <a href="#tools">Corrida
+      <a href="#tools" onclick="filterbygenre(12)" id="12">Corrida
 
         <i class="fa-solid fa-car"></i>
 
       </a>
 
-      <a href="#tools">MMO
+      <a href="#tools" onclick="filterbygenre(13)" id="13">MMO
 
         <i class="fa-solid fa-khanda"></i>
 
       </a>
 
-      <a href="#tools">Desporto
+      <a href="#tools" onclick="filterbygenre(14)" id="14">Desporto
 
         <i class="fa-solid fa-futbol"></i>
 
       </a>
 
-      <a href="#tools">Luta
+      <a href="#tools" onclick="filterbygenre(15)" id="15">Luta
 
         <i class="fa-solid fa-user-ninja"></i>
 
       </a>
 
-      <a href="#tools">Familiar
+      <a href="#tools" onclick="filterbygenre(16)" id="16">Familiar
 
         <i class="fa-solid fa-people-roof"></i>
 
       </a>
 
-      <a href="#tools">Tabuleiro
+      <a href="#tools" onclick="filterbygenre(17)" id="17">Tabuleiro
 
         <i class="fa-solid fa-chess-board"></i>
 
       </a>
 
-      <a href="#tools">Educacional
+      <a href="#tools" onclick="filterbygenre(18)" id="18">Educacional
 
         <i class="fa-solid fa-chalkboard-user"></i>
 
       </a>
 
-      <a href="#tools">Cartas
+      <a href="#tools" onclick="filterbygenre(19)" id="19">Cartas
 
         <i class="fa-solid fa-diamond"></i>
 
@@ -492,6 +492,16 @@ function filterFunction() {
       a[i].style.display = "none";
     }
   }
+}
+
+//FUNCAO DE FILTRO POR GENERO
+
+async function filterbygenre(genre_id){
+
+   console.log("ID do genero: " + genre_id);
+
+
+
 }
 
 //FUNCAO DE ADICIONAR Á WISHLIST
