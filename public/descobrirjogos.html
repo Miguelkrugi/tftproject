@@ -748,13 +748,38 @@ try {
      dataType: "json",
 
     });
+
+    //SEGUNDO, É REALIZADO UM MÉTODO POST PARA ADICIONAR O JOGO Á LIBRARY DO UTILIZADOR
+
+    let data = {
+
+      id_utilizador: utilizador_id,
+// wishlist_jogo_id: jogo_id
+      id_jogo: jogo_id,
+
+    }
+
+    let newLibraryGame = await $.ajax({
+
+url: "/games/insertnewgamelibrary",
+method: "post",
+data: JSON.stringify(data),
+contentType: "application/json",
+dataType: "json"
+
+
+});
+
+console.log(newLibraryGame);
+
     
   }
+
 
  
   //console.log("[utilizador] utilizador = " + JSON.stringify(jogo_comprado));
 
-  //SEGUNDO, É REALIZADO UM MÉTODO POST PARA ADICIONAR O JOGO Á LIBRARY DO UTILIZADOR
+  
 
 } catch(err){
    console.log(err);

@@ -97,6 +97,15 @@ router.get('/games/lancamento/antigos', async function(req, res, next) {
     res.status(result.status).send(result.result);
   });
 
+
+  router.post('/insertnewgamelibrary', async function(req, res, next) {
+    let newGame = req.body;
+    //console.log("[usersRoutes] Saving user " + JSON.stringify(newUser));
+    let result = await gamesModel.saveGameLibrary(newGame);
+    res.status(result.status).send(result.result);
+  });
+
+
   //GET WISHLIST GAMES
 
 
@@ -121,7 +130,7 @@ router.delete('/deletewishlist/:idwishlist', async function(req, res, next){
 });
 
 
-//ADICIONAR JOGO AOS FAVORITOS DO UTILIZADOR (TERMINAR AMANHÃ)
+//ADICIONAR JOGO AOS FAVORITOS DO UTILIZADOR (TERMINAR AMANHÃ | ATRAVÉS DA LIVRARIA)
 
 router.post('/addgamefavorites/:idutilizador/:idjogo', async function(req, res, next) {
   let utilizador_id = req.params.idutilizador;
@@ -131,6 +140,8 @@ router.post('/addgamefavorites/:idutilizador/:idjogo', async function(req, res, 
   let result = await gamesModel.saveGameFavoritos(utilizador_id, jogo_id);
   res.status(result.status).send(result.result);
 });
+
+
 
 //VERIFICAR COMPRA PARA ADICIONAR AOS FAVORITOS
 
