@@ -16,6 +16,21 @@ module.exports.getUsers = async function() {
     }
 }
 
+module.exports.updatePontosUtilizador = async function(uti_id, pontossobrantes){
+
+    try{
+        let sql = "UPDATE utilizador SET utilizador_dinheiro = " + pontossobrantes + " WHERE utilizador_id = " + uti_id;
+        let result = await pool.query(sql);
+        let productssfound = result.rows;
+        console.log("[produtoModel.getProductCategory] produtoscategoria = " + JSON.stringify(productssfound));
+        return {status: 200, data: productssfound };
+
+    } catch(err){
+        console.log(err);
+        return { status: 500, data: err };
+    }
+}
+
 module.exports.saveUser = async function(user) {
     //console.log("[usersModel.saveUser] user = " + JSON.stringify(user));
      //checks all fields needed and ignores other fields

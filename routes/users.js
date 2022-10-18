@@ -16,6 +16,18 @@ res.send("Ola Mundo");
 
 });
 
+router.put('/reduceprice/:idutilizador/:numeropontosaretirar', async function(req, res, next) {
+
+  let id_utilizador = req.params.idutilizador;
+  let numeropontosretirar = req.params.numeropontosretirar;
+
+  let result = await usersModel.updatePontosUtilizador(id_utilizador, numeropontosretirar);
+  res.status(result.status).send(result.data);
+
+});
+
+
+
 /*Obter todos os utilizadores registados*/
 
 router.get('/allusers', async function(req, res, next) {

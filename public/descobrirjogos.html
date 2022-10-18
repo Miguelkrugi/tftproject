@@ -723,7 +723,7 @@ async function addtolibrary(jogo){
 console.log("Buy function working :D");
 
 
-var utilizador_dinheiro = sessionStorage.getItem("utilizador_dinheiro");
+let utilizador_dinheiro = sessionStorage.getItem("utilizador_dinheiro");
 var utilizador_id = sessionStorage.getItem("utilizador_id");
 var jogo_id = jogo.jogo_id;
 console.log("ID do Utilizador: " + utilizador_id);
@@ -731,7 +731,34 @@ console.log("ID do Jogo: " + jogo_id);
 console.log("Preço do jogo: " + jogo.jogo_preco);
 console.log("Tokens of user: " + utilizador_dinheiro);
 
-   
+let dinheiro_utilizador_int = parseInt(utilizador_dinheiro);
+let jogo_price = parseInt(jogo.jogo_preco);
+let dinheiro_restante = utilizador_dinheiro - jogo.jogo_preco;
+
+try {
+
+  //PRIMEIRAMENTE É REALIZADO UM MÉTODO PUT PARA ATUALIZAR O NOVO VALOR DE TOKENS
+
+  if (dinheiro_utilizador_int >= jogo_price) {
+
+    let jogo_comprado = await $.ajax({
+
+     url: "/users/reduceprice/" + utilizador_id + "/" + dinheiro_restante,
+     method: "put",
+     dataType: "json",
+
+    });
+    
+  }
+
+ 
+  console.log("[utilizador] utilizador = " + JSON.stringify(jogo_comprado));
+
+  //SEGUNDO, É REALIZADO UM MÉTODO POST PARA ADICIONAR O JOGO Á LIBRARY DO UTILIZADOR
+
+} catch(err){
+   console.log(err);
+ }
 
 
 }
