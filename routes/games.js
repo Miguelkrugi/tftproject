@@ -19,6 +19,15 @@ router.get('/allgames', async function(req, res, next) {
   
 });*/
 
+router.get('/games/plataforma/:idplataforma', async function(req, res, next) {
+
+  let idplatform = req.params.idplataforma;
+  console.log("Retrieving games with id " + idplatform);
+  let result = await gamesModel.getGamesFromPlatform(idplatform);
+  res.status(result.status).send(result.data);
+
+});
+
 router.get('/games/genero/:idgenero', async function(req, res, next) {
 
     let idgenre = req.params.idgenero;

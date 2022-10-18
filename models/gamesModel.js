@@ -37,6 +37,21 @@ module.exports.getAllGeneros = async function() {
     }
 }
 
+//OBTER TODOS OS JOGOS DE ALGUNS JOGOS DE UMA PLATAFORMA
+
+module.exports.getGamesFromPlatform = async function(plataform_id) {
+    try {
+        let sql = "SELECT plataforma_jogo.jogo_identifier, plataforma_jogo.plataforma_identifier, jogo.jogo_id, jogo.jogo_name, jogo.jogo_released, jogo.jogo_rating, plataforma.plataforma_id, plataforma.plataforma_name FROM plataforma_jogo INNER JOIN jogo ON jogo.jogo_id = plataforma_jogo.jogo_identifier INNER JOIN plataforma ON plataforma.plataforma_id = plataforma_jogo.plataforma_identifier WHERE plataforma.plataforma_id = " + plataform_id;
+        let result = await pool.query(sql);
+        let gamesfound = result.rows;
+        console.log("[gamesModel.getGamesFromGenre] gamesplatform = " + JSON.stringify(gamesfound));
+        return { status: 200, data: gamesfound };
+    } catch (err) {
+        console.log(err);
+        return { status: 500, data: err };
+    }
+}
+
 //OBTER TODOS OS JOGOS DE ALGUNS JOGOS DE UM GÉNERO 
 
 module.exports.getGamesFromGenre = async function(genre_id) {
