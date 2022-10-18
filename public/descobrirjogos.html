@@ -156,109 +156,109 @@
     <button onclick="myFunction2()" class="dropbtn2">Plataforma</button>
     <div id="myDropdown2" class="dropdown-content">
       <input type="text" placeholder="Search.." id="myInput2" onkeyup="filterFunction2()">
-      <a href="#about">PC
+      <a href="#about" onclick="filterbyplatform(1)">PC
 
         <i class="fa-solid fa-laptop"></i>
 
       </a>
-      <a href="#base">PlayStation 5
+      <a href="#base" onclick="filterbyplatform(2)">PlayStation 5
 
         <i class="fa-brands fa-playstation"></i>
 
       </a>
-      <a href="#blog">PlayStation 4
+      <a href="#blog" onclick="filterbyplatform(3)">PlayStation 4
 
         <i class="fa-brands fa-playstation"></i>
 
       </a>
-      <a href="#contact">XBox One
+      <a href="#contact" onclick="filterbyplatform(4)">XBox One
 
         <i class="fa-brands fa-xbox"></i>
 
       </a>
-      <a href="#custom">XBox Series S/X
+      <a href="#custom" onclick="filterbyplatform(5)">XBox Series S/X
 
         <i class="fa-brands fa-xbox"></i>
 
       </a>
-      <a href="#support">Nintendo Switch
+      <a href="#support" onclick="filterbyplatform(6)">Nintendo Switch
 
         <i class="fa-solid fa-n"></i>
 
       </a>
-      <a href="#tools">iOS
+      <a href="#tools" onclick="filterbyplatform(7)">iOS
 
         <i class="fa-brands fa-app-store-ios"></i>
 
       </a>
 
-      <a href="#tools">Android
+      <a href="#tools" onclick="filterbyplatform(8)">Android
 
         <i class="fa-brands fa-android"></i>
 
       </a>
 
-      <a href="#tools">Nintendo 3DS
+      <a href="#tools" onclick="filterbyplatform(9)">Nintendo 3DS
 
         <i class="fa-solid fa-n"></i>
 
       </a>
 
-      <a href="#tools">Nintendo DS
+      <a href="#tools" onclick="filterbyplatform(10)">Nintendo DS
 
         <i class="fa-solid fa-n"></i>
 
       </a>
 
-      <a href="#tools">macOS
+      <a href="#tools" onclick="filterbyplatform(11)">macOS
 
         <i class="fa-brands fa-apple"></i>
 
       </a>
 
-      <a href="#tools">Linux
+      <a href="#tools" onclick="filterbyplatform(12)">Linux
 
         <i class="fa-brands fa-linux"></i>
 
       </a>
 
-      <a href="#tools">XBox 360
+      <a href="#tools" onclick="filterbyplatform(13)">XBox 360
 
         <i class="fa-brands fa-xbox"></i>
 
       </a>
 
-      <a href="#tools">XBox
+      <a href="#tools" onclick="filterbyplatform(14)">XBox
 
         <i class="fa-brands fa-xbox"></i>
 
       </a>
 
-      <a href="#tools">PlayStation 3
+      <a href="#tools" onclick="filterbyplatform(15)">PlayStation 3
 
         <i class="fa-brands fa-playstation"></i>
 
       </a>
 
-      <a href="#tools">Wii U
+      <a href="#tools" onclick="filterbyplatform(16)">Wii U
 
         <i class="fa-solid fa-w"></i>
 
       </a>
 
-      <a href="#tools">Wii
+      <a href="#tools" onclick="filterbyplatform(17)">Wii
 
         <i class="fa-solid fa-w"></i>
 
       </a>
 
-      <a href="#tools">Browser
+      <a href="#tools" onclick="filterbyplatform(18)">Browser
 
         <i class="fa-brands fa-edge"></i>
 
       </a>
 
-      <a href="#tools">Web
+      <a href="#tools" onclick="filterbyplatform(19)">Web
 
         <i class="fa-solid fa-desktop"></i>
 
@@ -421,6 +421,45 @@
 
             
 
+         }
+
+         //FUNCAO DE FILTRO POR PLATAFORMA
+
+         async function filterbyplatform(platform_id){
+
+          let gamesElem = document.getElementById("organize");
+
+          console.log("ID da plataforma selecionada: "  + platform_id);
+
+          try{
+
+let games = await $.ajax({
+
+  url: "/games/games/plataforma/" + platform_id,
+  method: "get",
+  dataType: "json",
+
+});
+
+console.log("[utilizador] utilizador = " + JSON.stringify(games));
+
+let html = "";
+
+for(let game of games){
+console.log("Jogo: " + game);
+html += creategameHTML(game);
+}
+
+console.log("OBTEVE");
+//  recipeName.innerHTML = html;
+
+gamesElem.innerHTML = html;
+
+
+} catch(err){
+console.log(err);
+}
+ 
          }
 
          //FUNCAO DE FILTRO POR GENERO
