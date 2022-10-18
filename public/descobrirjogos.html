@@ -409,7 +409,7 @@
             console.log('The Script will load now.');
 
             var utilizador_name = sessionStorage.getItem("utilizador_name");
-            var utilizador_dinheiro = sessionStorage.getItem("utilizador_dinheiro");
+            let utilizador_dinheiro = sessionStorage.getItem("utilizador_dinheiro");
             var utilizador_email = sessionStorage.getItem("utilizador_email");
             var utilizador_id = sessionStorage.getItem("utilizador_id");
 
@@ -716,7 +716,24 @@ function filterFunction() {
   }
 }
 
+//FUNCAO DE ADICIONAR Á WISHLIST
+async function addtolibrary(jogo){
 
+
+console.log("Buy function working :D");
+
+
+var utilizador_dinheiro = sessionStorage.getItem("utilizador_dinheiro");
+var utilizador_id = sessionStorage.getItem("utilizador_id");
+var jogo_id = jogo.jogo_id;
+console.log("ID do Utilizador: " + utilizador_id);
+console.log("ID do Jogo: " + jogo_id);
+console.log("Tokens of user: " + utilizador_dinheiro);
+
+
+
+
+}
 
 //FUNCAO DE ADICIONAR Á WISHLIST
 async function addtowishlist(jogo){
