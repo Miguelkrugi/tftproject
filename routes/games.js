@@ -52,21 +52,18 @@ router.get('/games/plataforma/:idplataforma', async function(req, res, next) {
 
 router.get('/games/lancamento/recentes', async function(req, res, next) {
 
-    let idplataforma = req.params.idplataforma;
-    console.log("Retrieving games with id " + idplataforma);
-    let result = await gamesModel.getGamesFromPlatform(idplataforma);
-    res.status(result.status).send(result.data);
+  let result = await gamesModel.getGamesRecent();
+  res.status(result.status).send(result.data);
 
 });
+
 
 //FILTRAR JOGOS PELOS MAIS ANTIGOS (DATA DE LANÇAMENTO)
 
 router.get('/games/lancamento/antigos', async function(req, res, next) {
 
-    let idplataforma = req.params.idplataforma;
-    console.log("Retrieving games with id " + idplataforma);
-    let result = await gamesModel.getGamesFromPlatform(idplataforma);
-    res.status(result.status).send(result.data);
+  let result = await gamesModel.getGamesOlder();
+  res.status(result.status).send(result.data);
 
 });
 
