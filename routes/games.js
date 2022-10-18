@@ -48,6 +48,22 @@ router.get('/games/plataforma/:idplataforma', async function(req, res, next) {
 
 });
 
+//FILTRAR JOGOS COM MELHOR AVALIAÇÃO
+
+router.get('/games/rating/best', async function(req, res, next) {
+
+  let result = await gamesModel.getGamesBest();
+  res.status(result.status).send(result.data);
+
+});
+
+router.get('/games/rating/worst', async function(req, res, next) {
+
+  let result = await gamesModel.getGamesWorst();
+  res.status(result.status).send(result.data);
+
+});
+
 //FILTRAR JOGOS PELOS MAIS RECENTES (DATA DE LANÇAMENTO)
 
 router.get('/games/lancamento/recentes', async function(req, res, next) {

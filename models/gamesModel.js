@@ -22,6 +22,33 @@ module.exports.getGames = async function() {
     }
 }
 
+module.exports.getGamesBest = async function() {
+    try {
+        let sql = "SELECT * FROM jogo ORDER BY jogo.jogo_rating DESC"; 
+        let result = await pool.query(sql);
+        let games = result.rows;
+        console.log("[gamesModel.getGames] games = " + JSON.stringify(games));
+        return { status: 200, data: games };
+    } catch (err) {
+        console.log(err);
+        return { status: 500, data: err };
+    }
+}
+
+module.exports.getGamesWorst = async function() {
+    try {
+        let sql = "SELECT * FROM jogo ORDER BY jogo.jogo_rating ASC"; 
+        let result = await pool.query(sql);
+        let games = result.rows;
+        console.log("[gamesModel.getGames] games = " + JSON.stringify(games));
+        return { status: 200, data: games };
+    } catch (err) {
+        console.log(err);
+        return { status: 500, data: err };
+    }
+}
+
+
 module.exports.getGamesRecent = async function() {
     try {
         let sql = "SELECT * FROM jogo ORDER BY jogo.jogo_released DESC"; 

@@ -289,13 +289,13 @@
     <button onclick="myFunction4()" class="dropbtn4">Avaliação</button>
     <div id="myDropdown4" class="dropdown-content">
       <input type="text" placeholder="Search.." id="myInput4" onkeyup="filterFunction4()">
-      <a href="#about">Melhor Avaliação
+      <a href="#about" onclick="filterbyratingbest()">Melhor Avaliação
 
         <i class="fa-solid fa-plus"></i>
 
       </a>
 
-      <a href="#about">Pior Avaliação
+      <a href="#about" onclick="filterbyratingworst()">Pior Avaliação
 
         <i class="fa-solid fa-minus"></i>
 
@@ -420,6 +420,78 @@
             getGames();
 
             
+
+         }
+
+         async function filterbyratingworst(){
+
+let gamesElem = document.getElementById("organize");
+
+try{
+
+let games = await $.ajax({
+
+url: "/games/games/rating/worst",
+method: "get",
+dataType: "json",
+
+});
+
+console.log("[utilizador] utilizador = " + JSON.stringify(games));
+
+let html = "";
+
+for(let game of games){
+console.log("Jogo: " + game);
+html += creategameHTML(game);
+}
+
+console.log("OBTEVE");
+//  recipeName.innerHTML = html;
+
+gamesElem.innerHTML = html;
+
+
+} catch(err){
+console.log(err);
+}
+
+
+}
+
+         async function filterbyratingbest(){
+
+          let gamesElem = document.getElementById("organize");
+
+          try{
+
+let games = await $.ajax({
+
+url: "/games/games/rating/best",
+method: "get",
+dataType: "json",
+
+});
+
+console.log("[utilizador] utilizador = " + JSON.stringify(games));
+
+let html = "";
+
+for(let game of games){
+console.log("Jogo: " + game);
+html += creategameHTML(game);
+}
+
+console.log("OBTEVE");
+//  recipeName.innerHTML = html;
+
+gamesElem.innerHTML = html;
+
+
+} catch(err){
+console.log(err);
+}
+
 
          }
 
