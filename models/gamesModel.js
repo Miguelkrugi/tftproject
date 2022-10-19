@@ -315,6 +315,8 @@ module.exports.deleteWishlistGame = async function(wishlist_id) {
 
 module.exports.deleteFavoriteGame = async function(favorite_id) {
     try {
+
+        console.log("Calling SQL query");
         let sql = "DELETE FROM favorito WHERE favorito.favorite_id= " + favorite_id;
         let result = await pool.query(sql);
         let gamesfound = result.rows;
