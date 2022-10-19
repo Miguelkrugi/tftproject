@@ -201,7 +201,7 @@ module.exports.saveGameWishlist = async function(game) {
 }
 
 
-module.exports.saveGameFavorite = async function(game) {
+module.exports.saveGamingtoFav = async function(game) {
     //console.log("[usersModel.saveUser] user = " + JSON.stringify(user));
      //checks all fields needed and ignores other fields
     /*if (typeof user != "object" || failUser(user)) {
@@ -213,7 +213,11 @@ module.exports.saveGameFavorite = async function(game) {
     let password = brcypt.hashSync(user.user_password, salt);*/
     try {
 
-        let sql = "INSERT INTO favorito (favorite_user_id, favorite_jogo_id) VALUES ($1, $2) RETURNING favorite_id"
+        let sql = "INSERT" + 
+                  " INTO favorito " + 
+                  "(favorite_user_id, favorite_jogo_id) " + 
+                  "VALUES ($1, $2) " + 
+                  "RETURNING favorite_id"
 
             //console.log(user.user_name + "|" + user.user_password + "|" + user.user_morada + "|" + user.user_email + "|" + user.user_points + "|" + user.user_admin + "|" + user.user_pt + "|" + user.user_nutri);
         let result = await pool.query(sql, [game.favorite_user_id, game.favorite_jogo_id]);

@@ -115,7 +115,7 @@ router.get('/games/favorite/:idutilizador', async function(req, res, next) {
   router.post('/insertnewgamefavorite', async function(req, res, next) {
     let newGame = req.body;
     //console.log("[usersRoutes] Saving user " + JSON.stringify(newUser));
-    let result = await gamesModel.saveGameFavorite(newGame);
+    let result = await gamesModel.saveGamingtoFav(newGame);
     res.status(result.status).send(result.result);
   });
 
