@@ -18,6 +18,13 @@ router.get('/recentesgames', async function(req, res, next) {
 
 });
 
+router.get('/mostdownloaded', async function(req, res, next) {
+
+  let result = await gamesModel.getMostDownloadedGames();
+  res.status(result.status).send(result.data);
+
+});
+
 
   
 /*router.get('/allgeneros', async function(req, res, next) {
