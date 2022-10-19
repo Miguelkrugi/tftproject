@@ -482,5 +482,17 @@ height: 100%;
   position: absolute;
 }
 
+#organize5 {
+
+  width: 28%;
+  height: 39%;
+  position: absolute;
+  background-color: rgb(89, 89, 89);
+  border-radius: 15px;
+  margin-left: 63%;
+  margin-top: 40%;
+  
+}
+
 
 

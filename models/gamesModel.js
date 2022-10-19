@@ -300,6 +300,21 @@ module.exports.getGamesFromFavorite = async function(utilizador_id) {
     }
 }
 
+///////////////////////////////////////////////////////////////////////
+
+module.exports.getCountFavoriteGames  = async function(utilizador_id) {
+    try {
+        let sql = "SELECT COUNT(*) FROM favorito WHERE favorito.favorite_user_id =" + utilizador_id;
+        let result = await pool.query(sql);
+        let gamesfound = result.rows;
+        console.log("[gamesModel.getGamesFromGenre] gameswishlist = " + JSON.stringify(gamesfound));
+        return { status: 200, data: gamesfound };
+    } catch (err) {
+        console.log(err);
+        return { status: 500, data: err };
+    }
+}
+
 module.exports.deleteWishlistGame = async function(wishlist_id) {
     try {
         let sql = "DELETE FROM wishlist WHERE wishlist.wishlist_id= " + wishlist_id;
