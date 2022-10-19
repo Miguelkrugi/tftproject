@@ -156,7 +156,7 @@ router.delete('/deletewishlist/:idwishlist', async function(req, res, next){
 
 });
 
-router.delete('/deletefavorite/:idfavorite', async function(req, res, next){
+router.delete('/deletefavorite/:idfavorite', async function(req, res, next){ //COMO RESOLVER?
 
   let favorite_id = req.params.idfavorite;
   console.log("[artigosRoutes] Deleting favorite game with id: " + favorite_id);
