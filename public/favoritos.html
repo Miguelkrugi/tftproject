@@ -468,6 +468,28 @@ return "<div class='selectbox55' id='selectbox55'>" + "<p name='gamename1' id='g
 
 }
 
+
+async function removefromfavorites(favorite_game){
+
+try {
+
+ let games = await $.ajax({
+
+   url: "/games/deletefavorite/" + favorite_game.favorite_id,
+   method: "delete",
+   dataType: "json",
+
+});
+
+console.log("Favorite Game with id: " + favorite_game.favorite_id);
+
+} catch (err){
+ console.log(err);
+}
+
+
+}
+
            /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
 function myFunction() {

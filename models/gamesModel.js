@@ -313,6 +313,19 @@ module.exports.deleteWishlistGame = async function(wishlist_id) {
     }
 }
 
+module.exports.deleteFavoriteGame = async function(favorite_id) {
+    try {
+        let sql = "DELETE FROM favorito WHERE favorito.favorite_id= " + favorite_id;
+        let result = await pool.query(sql);
+        let gamesfound = result.rows;
+        console.log("[gamesModel.getGamesFromGenre] gameswishlist = " + JSON.stringify(gamesfound));
+        return { status: 200, data: gamesfound };
+    } catch (err) {
+        console.log(err);
+        return { status: 500, data: err };
+    }
+}
+
 
 module.exports.getGamesRankingAsc = async function() {
     try {

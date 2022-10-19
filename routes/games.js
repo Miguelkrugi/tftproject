@@ -156,6 +156,15 @@ router.delete('/deletewishlist/:idwishlist', async function(req, res, next){
 
 });
 
+router.delete('/deletefavorite/:idfavorite', async function(req, res, next){
+
+  let favorite_id = req.params.idfavorite;
+  console.log("[artigosRoutes] Deleting favorite game with id: " + favorite_id);
+  let result = await gamesModel.deleteFavoriteGame(favorite_id);
+  res.status(result.status).send(result.data);
+
+});
+
 
 //ADICIONAR JOGO AOS FAVORITOS DO UTILIZADOR (TERMINAR AMANHÃ | ATRAVÉS DA LIVRARIA)
 
