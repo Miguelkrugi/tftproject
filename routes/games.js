@@ -11,6 +11,14 @@ router.get('/allgames', async function(req, res, next) {
   
 });
 
+router.get('/recentesgames', async function(req, res, next) {
+
+  let result = await gamesModel.getRecentesGames();
+  res.status(result.status).send(result.data);
+
+});
+
+
   
 /*router.get('/allgeneros', async function(req, res, next) {
 

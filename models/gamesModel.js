@@ -533,6 +533,19 @@ module.exports.getRecentGames = async function(utilizador_id) {
     }
 }
 
+module.exports.getRecentesGames = async function() {
+    try {
+        let sql = "select * from jogo order by jogo.jogo_released DESC limit 5";
+        let result = await pool.query(sql);
+        let gamesfound = result.rows;
+        console.log("[gamesModel.getGamesFromGenre] gamesrecent = " + JSON.stringify(gamesfound));
+        return { status: 200, data: gamesfound };
+    } catch (err) {
+        console.log(err);
+        return { status: 500, data: err };
+    }
+}
+
 /*
    1. AO FAZER UM ADICIONAR AO FAVORITO, É FEITO UM SELECT DOS JOGOS ADQUIRIDOS PARA VERIFICAR S EO ID DO JOGO E ID DO UTILIZADOR CORRESPONDEM AO PEDIDO FEITO. SE SIM, TEM O JOGO ADQUIRIDO E PODE ADICIONAR 
 
