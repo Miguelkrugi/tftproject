@@ -244,6 +244,19 @@ module.exports.getGamesFromWishlist = async function(utilizador_id) {
     }
 }
 
+module.exports.getGamesFromLibrary = async function(utilizador_id) {
+    try {
+        let sql = "SELECT utilizador_jogo.id_compra, utilizador_jogo.id_utilizador, utilizador_jogo.id_jogo, utilizador.utilizador_name, utilizador.utilizador_id, jogo.jogo_id, jogo.jogo_name, jogo.jogo_rating, jogo.jogo_downloads, jogo.jogo_released FROM utilizador_jogo INNER JOIN utilizador ON utilizador.utilizador_id = utilizador_jogo.id_utilizador INNER JOIN jogo ON jogo.jogo_id = utilizador_jogo.id_jogo WHERE utilizador.utilizador_id = " + utilizador_id;
+        let result = await pool.query(sql);
+        let gamesfound = result.rows;
+        console.log("[gamesModel.getGamesFromGenre] gameswishlist = " + JSON.stringify(gamesfound));
+        return { status: 200, data: gamesfound };
+    } catch (err) {
+        console.log(err);
+        return { status: 500, data: err };
+    }
+}
+
 
 
 module.exports.deleteWishlistGame = async function(wishlist_id) {

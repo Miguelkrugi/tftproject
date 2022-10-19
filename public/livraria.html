@@ -390,9 +390,71 @@
  
          </nav>
 
-        
+        <!--ORGANIZE THE LIBRARY-->
+
+        <div id="organize3">
+
+
+        </div>
 
          <script>
+
+          window.onload = function exampleFunction() {
+            console.log('The Script will load now.');
+
+            var utilizador_name = sessionStorage.getItem("utilizador_name");
+            let utilizador_dinheiro = sessionStorage.getItem("utilizador_dinheiro");
+            var utilizador_email = sessionStorage.getItem("utilizador_email");
+            var utilizador_id = sessionStorage.getItem("utilizador_id");
+
+            console.log(utilizador_name);
+
+            //GET DOS JOGOS
+
+            getGamesLibrary();
+
+            
+
+         }
+
+         async function getGamesLibrary(){
+
+console.log("Obtendo os jogos da library")
+
+// let recipeName = document.getElementById("nome1")
+ let gamesElem = document.getElementById("organize3");
+ var utilizador_id = sessionStorage.getItem("utilizador_id");
+ console.log("setItem->userId = " + utilizador_id);
+
+try{
+
+let games = await $.ajax({
+
+url: "/games/library/" + utilizador_id,
+method: "get",
+dataType: "json",
+
+});
+
+console.log("[utilizador] utilizador = " + JSON.stringify(games));
+
+let html = "";
+
+for(let game of games){
+ console.log("Jogo: " + game); //PORQUE DÁ ERRO?
+ html += createlibraryHTML(game);
+}
+
+console.log("OBTEVE");
+//  recipeName.innerHTML = html;
+
+gamesElem.innerHTML = html;
+
+
+} catch(err){
+ console.log(err);
+}
+}
 
            /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */

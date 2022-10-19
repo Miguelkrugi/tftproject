@@ -105,6 +105,19 @@ router.get('/games/lancamento/antigos', async function(req, res, next) {
     res.status(result.status).send(result.result);
   });
 
+  
+  //GET LIBRARY GAMES
+
+
+  router.get('/library/:idutilizador', async function(req, res, next) {
+
+    let idutilizador = req.params.idutilizador;
+    console.log("Retrieving games with id " + idutilizador);
+    let result = await gamesModel.getGamesFromLibrary(idutilizador);
+    res.status(result.status).send(result.data);
+
+});
+
 
   //GET WISHLIST GAMES
 
