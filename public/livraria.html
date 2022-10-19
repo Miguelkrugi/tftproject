@@ -7,6 +7,8 @@
 
   <script src="https://kit.fontawesome.com/15e6590408.js" crossorigin="anonymous"></script>
 
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
   <a href="secondpagetest.html" style="">
 
     <img src="./images/tftlogo-removebg-preview.png" style="width: 8%; height: 19%; position:absolute; margin-top: -3.4%;">
@@ -454,6 +456,18 @@ gamesElem.innerHTML = html;
 } catch(err){
  console.log(err);
 }
+}
+
+function createlibraryHTML(jogo){
+
+//console.log("ID de caixa: " + jogo.wishlist_id);
+
+return "<div class='selectbox55' id='selectbox55'>" + "<p name='gamename1' id='gamename1' style='text-align: center; font-size: 90%; margin-top: 10%;color:black;'><b>" + jogo.jogo_name + "</b></p>" + "<p name='gamereleased1' id='gamereleased1' style='text-align: center; font-size: 90%; margin-top: 22%;color:black;'>" + jogo.jogo_released + "</p>" + "<p name='rating1' id='rating1' style='text-align: center; font-size: 90%; margin-top: 1%;color:black;'>" + jogo.jogo_rating + "</p>" + "<p name='downloads1' id='downloads1' style='text-align: center; font-size: 90%; margin-top: 1%;color:black;'>" + jogo.jogo_downloads + "</p>" +  "<button style='margin-top: 5%; margin-left: 6%; visibility: visible;'>Comprar</button>" + "<button onclick='removewishlist(" + JSON.stringify(jogo) + ")' style='margin-top: 5%; margin-left: 40%; visibility: visible;'>Remover</button>" + "</div>"
+
+// return "<div class='selectbox5' id='selectbox55'>" + recipe.receita_titulo + "</div>";
+
+/*<p name="criador1" id="criador1" style="text-align: center;font-size: 90%; margin-top: 2%;">CRIADOR DA RECEITA </p>*/
+
 }
 
            /* When the user clicks on the button,
