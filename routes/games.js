@@ -172,6 +172,18 @@ router.get('/library/quantity/:idutilizador', async function(req, res, next) {
 
 });
 
+
+//OBTER OS 4 JOGOS RECENTEMENTE COMPRADOS
+
+router.get('/recent/:idutilizador', async function(req, res, next) {
+
+  let idutilizador = req.params.idutilizador;
+  console.log("Retrieving games with id " + idutilizador);
+  let result = await gamesModel.getRecentGames(idutilizador);
+  res.status(result.status).send(result.data);
+
+});
+
 //DELETE WISHLIST GAME
 
 router.delete('/deletewishlist/:idwishlist', async function(req, res, next){
