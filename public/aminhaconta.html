@@ -236,7 +236,14 @@
 
              });
 
-             console.log("[utilizador] utilizador = " + JSON.stringify(favorite_quantidade.count));
+             let html = "";
+
+             for(let fav of favorite_quantidade){
+              console.log("Fav: " + fav); //PORQUE DÁ ERRO?
+              //html += createwishlistHTML(game);
+             }
+
+             //console.log("[utilizador] utilizador = " + JSON.stringify(favorite_quantidade.count));
 
              //document.getElementById("favoritosquantity").innerHTML = "" + number_quantity;
 
