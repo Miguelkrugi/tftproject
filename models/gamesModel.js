@@ -200,6 +200,32 @@ module.exports.saveGameWishlist = async function(game) {
     }
 }
 
+
+module.exports.saveGameFavorite = async function(game) {
+    //console.log("[usersModel.saveUser] user = " + JSON.stringify(user));
+     //checks all fields needed and ignores other fields
+    /*if (typeof user != "object" || failUser(user)) {
+        if (user.errMsg)
+            return { status: 400, data: { msg: user.errMsg } };
+        else
+            return { status: 400, data: { msg: "Malformed data" } };
+    }
+    let password = brcypt.hashSync(user.user_password, salt);*/
+    try {
+
+        let sql = "INSERT INTO favorito (favorite_user_id, favorite_jogo_id) VALUES ($1, $2) RETURNING favorite_id"
+
+            //console.log(user.user_name + "|" + user.user_password + "|" + user.user_morada + "|" + user.user_email + "|" + user.user_points + "|" + user.user_admin + "|" + user.user_pt + "|" + user.user_nutri);
+        let result = await pool.query(sql, [game.favorite_user_id, game.favorite_jogo_id]);
+        
+        return { status: 200, result: result };
+    } catch (err) {
+
+        console.log(err);
+        return { status: 500, result: err };
+    }
+}
+
 module.exports.saveGameLibrary = async function(game) {
     //console.log("[usersModel.saveUser] user = " + JSON.stringify(user));
      //checks all fields needed and ignores other fields
@@ -257,7 +283,18 @@ module.exports.getGamesFromLibrary = async function(utilizador_id) {
     }
 }
 
-
+module.exports.getGamesFromFavorite = async function(utilizador_id) {
+    try {
+        let sql = "SELECT favorito.favorite_id, favorito.favorite_user_id, favorito.favorite_jogo_id, utilizador.utilizador_name, utilizador.utilizador_id, jogo.jogo_id ,jogo.jogo_name, jogo.jogo_rating, jogo.jogo_downloads, jogo.jogo_released FROM favorito INNER JOIN utilizador ON utilizador.utilizador_id = favorito.favorite_user_id INNER JOIN jogo on jogo.jogo_Id = favorito.favorite_jogo_id WHERE utilizador.utilizador_id = " + utilizador_id;
+        let result = await pool.query(sql);
+        let gamesfound = result.rows;
+        console.log("[gamesModel.getGamesFromGenre] gameswishlist = " + JSON.stringify(gamesfound));
+        return { status: 200, data: gamesfound };
+    } catch (err) {
+        console.log(err);
+        return { status: 500, data: err };
+    }
+}
 
 module.exports.deleteWishlistGame = async function(wishlist_id) {
     try {

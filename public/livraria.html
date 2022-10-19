@@ -462,11 +462,51 @@ function createlibraryHTML(jogo){
 
 //console.log("ID de caixa: " + jogo.wishlist_id);
 
-return "<div class='selectbox55' id='selectbox55'>" + "<p name='gamename1' id='gamename1' style='text-align: center; font-size: 90%; margin-top: 10%;color:black;'><b>" + jogo.jogo_name + "</b></p>" + "<p name='gamereleased1' id='gamereleased1' style='text-align: center; font-size: 90%; margin-top: 22%;color:black;'>" + jogo.jogo_released + "</p>" + "<p name='rating1' id='rating1' style='text-align: center; font-size: 90%; margin-top: 1%;color:black;'>" + jogo.jogo_rating + "</p>" + "<p name='downloads1' id='downloads1' style='text-align: center; font-size: 90%; margin-top: 1%;color:black;'>" + jogo.jogo_downloads + "</p>" +  "<button style='margin-top: 5%; margin-left: 6%; visibility: visible;'>Comprar</button>" + "<button onclick='removewishlist(" + JSON.stringify(jogo) + ")' style='margin-top: 5%; margin-left: 40%; visibility: visible;'>Remover</button>" + "</div>"
+return "<div class='selectbox55' id='selectbox55'>" + "<p name='gamename1' id='gamename1' style='text-align: center; font-size: 90%; margin-top: 10%;color:black;'><b>" + jogo.jogo_name + "</b></p>" + "<p name='gamereleased1' id='gamereleased1' style='text-align: center; font-size: 90%; margin-top: 22%;color:black;'>" + jogo.jogo_released + "</p>" + "<p name='rating1' id='rating1' style='text-align: center; font-size: 90%; margin-top: 1%;color:black;'>" + jogo.jogo_rating + "</p>" + "<p name='downloads1' id='downloads1' style='text-align: center; font-size: 90%; margin-top: 1%;color:black;'>" + jogo.jogo_downloads + "</p>" +  "<button style='margin-top: 5%; margin-left: 6%; visibility: visible;'>Jogar</button>" + "<button onclick='addtofavorites(" + JSON.stringify(jogo) + ")' style='margin-top: 5%; margin-left: 40%; visibility: visible;'>Favorito</button>" + "</div>"
 
 // return "<div class='selectbox5' id='selectbox55'>" + recipe.receita_titulo + "</div>";
 
 /*<p name="criador1" id="criador1" style="text-align: center;font-size: 90%; margin-top: 2%;">CRIADOR DA RECEITA </p>*/
+
+}
+
+async function addtofavorites(jogo){
+
+
+console.log("Favorites function working :D");
+console.log("ID do Jogo: " + jogo.jogo_id);
+var utilizador_id = sessionStorage.getItem("utilizador_id");
+var jogo_id = jogo.jogo_id;
+console.log("ID do Utilizador: " + utilizador_id);
+
+try {
+
+let data = {
+
+favorite_user_id: utilizador_id,
+// wishlist_jogo_id: jogo_id
+favorite_jogo_id: jogo_id,
+
+}
+
+let newFavoriteGame = await $.ajax({
+
+  url: "/games/insertnewgamefavorite",
+  method: "post",
+  data: JSON.stringify(data),
+  contentType: "application/json",
+  dataType: "json"
+
+  
+});
+console.log(newFavoriteGame);
+} catch (err) {
+
+console.log(err);
+
+}
+
+console.log("Stored...");
 
 }
 

@@ -84,7 +84,14 @@ router.get('/games/lancamento/antigos', async function(req, res, next) {
 
 });
 
+router.get('/games/favorite/:idutilizador', async function(req, res, next) {
 
+  let idutilizador = req.params.idutilizador;
+  console.log("Retrieving games with id " + idutilizador);
+  let result = await gamesModel.getGamesFromFavorite(idutilizador);
+  res.status(result.status).send(result.data);
+
+});
 
 
 
@@ -102,6 +109,13 @@ router.get('/games/lancamento/antigos', async function(req, res, next) {
     let newGame = req.body;
     //console.log("[usersRoutes] Saving user " + JSON.stringify(newUser));
     let result = await gamesModel.saveGameLibrary(newGame);
+    res.status(result.status).send(result.result);
+  });
+
+  router.post('/insertnewgamefavorite', async function(req, res, next) {
+    let newGame = req.body;
+    //console.log("[usersRoutes] Saving user " + JSON.stringify(newUser));
+    let result = await gamesModel.saveGameFavorite(newGame);
     res.status(result.status).send(result.result);
   });
 
