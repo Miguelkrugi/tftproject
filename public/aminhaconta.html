@@ -222,6 +222,8 @@
 
             countFavoriteQuantity();
 
+            countWishlistQuantity();
+
             //GET DO NUMERO DE JOGOS FAVORITOS
 
             async function countFavoriteQuantity(){
@@ -259,11 +261,57 @@
 
             //GET DO NUMERO DE JOGOS WISHLIST
 
+            async function countWishlistQuantity(){
+
+try {
+
+ let wishlist_quantidade = await $.ajax({
+
+  url: "/games/wishlist/quantity/" + id_user,
+  method: "get",
+  dataType: "json",
+
+ });
+
+ let html = "";
+
+ for(let wish of wishlist_quantidade){
+  console.log("Wish: " + wish); //PORQUE DÁ ERRO?
+  html += createquantitywishlistHTML(wish);
+ }
+
+ //console.log("[utilizador] utilizador = " + JSON.stringify(favorite_quantidade.count));
+
+ //document.getElementById("favoritosquantity").innerHTML = "" + number_quantity;
+
+ //console.log(favorite_quantidade);
+
+
+} catch(err){
+  console.log(err);
+}
+
+}
+
 
             //GET DO NUMERO DE JOGOS COMPRADOS
 
            
         }
+
+        function createquantitywishlistHTML(wishlist){
+
+console.log("ID do wishlist: " + wishlist.count);
+
+document.getElementById("wishlistquantity").innerHTML = wishlist.count;
+
+//return "<div class='selectbox55' id='selectbox55'>" + "<p name='gamename1' id='gamename1' style='text-align: center; font-size: 90%; margin-top: 10%;color:black;'><b>" + jogo.jogo_name + "</b></p>" + "<p name='gamereleased1' id='gamereleased1' style='text-align: center; font-size: 90%; margin-top: 22%;color:black;'>" + jogo.jogo_released + "</p>" + "<p name='rating1' id='rating1' style='text-align: center; font-size: 90%; margin-top: 1%;color:black;'>" + jogo.jogo_rating + "</p>" + "<p name='downloads1' id='downloads1' style='text-align: center; font-size: 90%; margin-top: 1%;color:black;'>" + jogo.jogo_downloads + "</p>" +  "<button style='margin-top: 5%; margin-left: 6%; visibility: visible;'>Comprar</button>" + "<button onclick='removewishlist(" + JSON.stringify(jogo) + ")' style='margin-top: 5%; margin-left: 40%; visibility: visible;'>Remover</button>" + "</div>"
+
+// return "<div class='selectbox5' id='selectbox55'>" + recipe.receita_titulo + "</div>";
+
+/*<p name="criador1" id="criador1" style="text-align: center;font-size: 90%; margin-top: 2%;">CRIADOR DA RECEITA </p>*/
+
+}
 
         function createquantityfavHTML(favorite){
 

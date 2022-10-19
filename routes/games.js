@@ -154,6 +154,15 @@ router.get('/favorite/quantity/:idutilizador', async function(req, res, next) {
 
 });
 
+router.get('/wishlist/quantity/:idutilizador', async function(req, res, next) {
+
+  let idutilizador = req.params.idutilizador;
+  console.log("Retrieving games with id " + idutilizador);
+  let result = await gamesModel.getCountWishlistGames(idutilizador);
+  res.status(result.status).send(result.data);
+
+});
+
 //DELETE WISHLIST GAME
 
 router.delete('/deletewishlist/:idwishlist', async function(req, res, next){
