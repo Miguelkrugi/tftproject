@@ -313,7 +313,7 @@ module.exports.deleteWishlistGame = async function(wishlist_id) {
     }
 }
 
-module.exports.deleteFavoriteGame = async function(favorite_id) {
+module.exports.deleting = async function(favorite_id) {
     try {
 
         console.log("Calling SQL query");
