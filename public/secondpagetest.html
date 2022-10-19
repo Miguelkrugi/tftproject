@@ -41,15 +41,17 @@
 
     <div id="jogosrecentes">
 
+      <div id="organize7">
+
+
+       
+      </div>
+
      <h2 style="position: absolute; margin-top: 9%; margin-left: 3%; font-size: 30px;">Jogos Recentes</h2>
 
      <div style="background-color:aliceblue; width:90%; height:0.1%; position:absolute; margin-top: 12.4%; margin-left: 3%;">
 
-      <div id="organize6">
-
-
       
-      </div>
 
     </div>
 
@@ -224,7 +226,7 @@ gamesElem.innerHTML = html;
 
          function creategameHTML(jogo){
   
-  return "<div class='selectbox55' id='selectbox55'>" + "<p name='gamename1' id='gamename1' style='text-align: center; font-size: 90%; margin-top: 10%;color:black;'><b>" + jogo.jogo_name + "</b></p>" + "<p name='gamereleased1' id='gamereleased1' style='text-align: center; font-size: 90%; margin-top: 22%;color:black;'>" + jogo.jogo_released + "</p>" + "<p name='rating1' id='rating1' style='text-align: center; font-size: 90%; margin-top: 1%;color:black;'>" + jogo.jogo_rating + "</p>" + "<p name='downloads1' id='downloads1' style='text-align: center; font-size: 90%; margin-top: 1%;color:black;'>" + jogo.jogo_downloads + "</p>" + "<p name='downloads1' id='downloads1' style='text-align: center; font-size: 90%; margin-top: 1%;color:black;'>" + jogo.jogo_preco + "</p>" +  "<button onclick='addtolibrary("+ JSON.stringify(jogo) + ")' style='margin-top: 5%; margin-left: 7%;'>Comprar Jogo</button>" + "<button onclick='addtowishlist(" + JSON.stringify(jogo) + ")'>Adicionar á Wishlist</button>" + "</div>"
+  return "<div class='selectbox85' id='selectbox85'>" + "<p name='gamename1' id='gamename1' style='text-align: center; font-size: 90%; margin-top: 10%;color:black;'><b>" + jogo.jogo_name + "</b></p>" + "<p name='gamereleased1' id='gamereleased1' style='text-align: center; font-size: 90%; margin-top: 22%;color:black;'>" + jogo.jogo_released + "</p>" + "<p name='rating1' id='rating1' style='text-align: center; font-size: 90%; margin-top: 1%;color:black;'>" + jogo.jogo_rating + "</p>" + "<p name='downloads1' id='downloads1' style='text-align: center; font-size: 90%; margin-top: 1%;color:black;'>" + jogo.jogo_downloads + "</p>" + "<p name='downloads1' id='downloads1' style='text-align: center; font-size: 90%; margin-top: 1%;color:black;'>" + jogo.jogo_preco + "</p>" +  "<button onclick='addtolibrary("+ JSON.stringify(jogo) + ")' style='margin-top: 5%; margin-left: 7%;'>Comprar Jogo</button>" + "<button onclick='addtowishlist(" + JSON.stringify(jogo) + ")'>Adicionar á Wishlist</button>" + "</div>"
  
   // return "<div class='selectbox5' id='selectbox55'>" + recipe.receita_titulo + "</div>";
 
