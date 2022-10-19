@@ -328,6 +328,19 @@ module.exports.getCountWishlistGames  = async function(utilizador_id) {
     }
 }
 
+module.exports.getCountLibraryGames  = async function(utilizador_id) {
+    try {
+        let sql = "SELECT COUNT(*) FROM utilizador_jogo WHERE utilizador_jogo.id_utilizador =" + utilizador_id;
+        let result = await pool.query(sql);
+        let gamesfound = result.rows;
+        console.log("[gamesModel.getGamesFromGenre] gameswishlist = " + JSON.stringify(gamesfound));
+        return { status: 200, data: gamesfound };
+    } catch (err) {
+        console.log(err);
+        return { status: 500, data: err };
+    }
+}
+
 module.exports.deleteWishlistGame = async function(wishlist_id) {
     try {
         let sql = "DELETE FROM wishlist WHERE wishlist.wishlist_id= " + wishlist_id;
