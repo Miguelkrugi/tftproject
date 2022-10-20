@@ -8,7 +8,7 @@ app.listen(3000, () => console.log('Node.js app listening on port 3000.'))
 */
 
 const express = require('express')
-const cors = require("cors");  //ADICIONADO
+var cors = require("cors");  //ADICIONADO
 const app = express()
 const port = 8000
 
