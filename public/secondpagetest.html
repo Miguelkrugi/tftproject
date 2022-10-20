@@ -79,6 +79,22 @@
 
     <div id="jogosgratisweb">
 
+      <div id="organize9">
+
+      </div>
+
+      <div id="organize10">
+
+      </div>
+
+      <div id="organize11">
+
+      </div>
+
+      <div id="organize12">
+
+      </div>
+
       <h2 style="position: absolute; margin-top: 85%; margin-left: 3%; font-size: 30px;">Jogos Grátis (Web & Browser)</h2>
 
       <div style="background-color:aliceblue; width:90%; height:0.1%; position:absolute; margin-top: 88.4%; margin-left: 3%;"></div>
@@ -182,6 +198,54 @@
 
             getDownloadedGames();
 
+            getWebGameOne();
+
+            ////////////////// GET WEB GAME ONE /////////////////
+
+            async function getWebGameOne(){
+
+              //Definir um array de possibilidade de jogos grátis
+
+              var game1possibilities = ["https://www.freetogame.com/api/game?id=345", "https://www.freetogame.com/api/game?id=427", "https://www.freetogame.com/api/game?id=340", "https://www.freetogame.com/api/game?id=445", "https://www.freetogame.com/api/game?id=347", "https://www.freetogame.com/api/game?id=380", "https://www.freetogame.com/api/game?id=458"];
+
+              var urlitem = game1possibilities[Math.floor(Math.random()*game1possibilities.length)];
+console.log("Obtendo os jogos ultimos 5 recentes");
+
+// let recipeName = document.getElementById("nome1")
+ let gamesElem = document.getElementById("organize9");
+ var utilizador_id = sessionStorage.getItem("utilizador_id");
+ console.log("setItem->userId = " + utilizador_id);
+
+try{
+
+let games = await $.ajax({
+
+url: urlitem,
+method: "get",
+dataType: "json",
+
+});
+
+console.log("[utilizador] utilizador = " + JSON.stringify(games));
+
+let html = "";
+
+for(let game of games){
+ console.log("Jogo: " + game); //PORQUE DÁ ERRO?
+ html += creategameoneHTML(game);
+}
+
+
+console.log("OBTEVE");
+//  recipeName.innerHTML = html;
+
+gamesElem.innerHTML = html;
+
+
+} catch(err){
+ console.log(err);
+}
+}
             //OBTER OS ULTIMOS 5 JOGOS MAIS BAIXADOS
 
             async function getDownloadedGames(){
@@ -269,6 +333,16 @@ gamesElem.innerHTML = html;
 }
 
          }
+
+         function creategameoneHTML(jogo){
+  
+  return "<div class='selectbox95' id='selectbox95'>" + "<p name='gamename1' id='gamename1' style='text-align: center; font-size: 90%; margin-top: 10%;color:black;'><b>" + jogo.title + "</b></p>" + "<p name='gamereleased1' id='gamereleased1' style='text-align: center; font-size: 90%; margin-top: 22%;color:black;'>" + jogo.release_date + "</p>" + "<p name='rating1' id='rating1' style='text-align: center; font-size: 90%; margin-top: 1%;color:black;'>" + jogo.developer + "</p>" + "<p name='downloads1' id='downloads1' style='text-align: center; font-size: 90%; margin-top: 1%;color:black;'>" + jogo.publisher + "</p>" + "<p name='downloads1' id='downloads1' style='text-align: center; font-size: 90%; margin-top: 1%;color:black;'>" + jogo.genre + "</p>" +  "<a href='" + jogo.game_url + "'><button style='margin-top: 5%; margin-left: 3%;'>Jogar</button></a>" + "</div>"
+ 
+  // return "<div class='selectbox5' id='selectbox55'>" + recipe.receita_titulo + "</div>";
+
+ /*<p name="criador1" id="criador1" style="text-align: center;font-size: 90%; margin-top: 2%;">CRIADOR DA RECEITA </p>*/
+
+}
 
          function creategameHTML(jogo){
   

@@ -472,7 +472,17 @@ height: 100%;
   
 }
 
-
+.selectbox95 {
+  width: 18%;
+  height: 93%;
+  border: 1px solid white;
+  border-radius: 6%;
+  cursor: pointer;
+  color: black;
+  background-color: white;
+  padding: 5px;
+  
+}
 
 #organize {
   width: 80%;
@@ -541,4 +551,66 @@ height: 100%;
   margin-left: 3%;
 
 }
+
+#organize9 {
+
+  width: 20%;
+  height: 42%;
+  background-color: #04AA6D;
+  position: absolute;
+  margin-top: 90%;
+  margin-left: 3%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+
+
+}
+
+#organize10 {
+
+  width: 20%;
+  height: 42%;
+  background-color: #04AA6D;
+  position: absolute;
+  margin-top: 90%;
+  margin-left: 25%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+
+}
+
+#organize11 {
+
+  width: 20%;
+  height: 42%;
+  background-color: #04AA6D;
+  position: absolute;
+  margin-top: 90%;
+  margin-left: 47%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+
+}
+
+#organize12 {
+
+  width: 20%;
+  height: 42%;
+  background-color: #04AA6D;
+  position: absolute;
+  margin-top: 90%;
+  margin-left: 69%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+
+}
+
 
