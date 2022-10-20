@@ -204,6 +204,52 @@
 
             getWebGameThree();
 
+            getWebGameFour();
+
+            ////////////////// GET WEB GAME FOUR ///////////////////
+
+            async function getWebGameFour(){
+
+//Definir um array de possibilidade de jogos grátis
+
+var game1possibilities = ["https://www.freetogame.com/api/game?id=342", "https://www.freetogame.com/api/game?id=354", "https://www.freetogame.com/api/game?id=355", "https://www.freetogame.com/api/game?id=358", "https://www.freetogame.com/api/game?id=421", "https://www.freetogame.com/api/game?id=343", "https://www.freetogame.com/api/game?id=344"];
+
+var urlitem = game1possibilities[Math.floor(Math.random()*game1possibilities.length)];
+console.log("Obtendo os jogos ultimos 5 recentes");
+
+// let recipeName = document.getElementById("nome1")
+let gamesElem = document.getElementById("organize12");
+var utilizador_id = sessionStorage.getItem("utilizador_id");
+console.log("setItem->userId = " + utilizador_id);
+
+try{
+
+let games = await $.ajax({
+
+url: urlitem,
+method: "get",
+dataType: "json",
+
+});
+
+console.log("[utilizador] utilizador = " + JSON.stringify(games));
+
+let html = "";
+
+html += creategameoneHTML(games);
+
+
+console.log("OBTEVE");
+//  recipeName.innerHTML = html;
+
+gamesElem.innerHTML = html;
+
+
+} catch(err){
+console.log(err);
+}
+}
+
             ////////////////// GET WEB GAME THREE //////////////////
 
             async function getWebGameThree(){
