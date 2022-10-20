@@ -16,6 +16,9 @@ const corsOptions ={
 app.use(cors(corsOptions));*/
 
 const express = require('express')
+
+const app = express()
+
 const cors = require('cors');
 
 const corsOptions = {
@@ -23,7 +26,6 @@ const corsOptions = {
    credentials: true,
    optionSucessStatus: 200
 }
-const app = express()
 const port = 8000
 
 
