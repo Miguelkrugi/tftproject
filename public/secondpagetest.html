@@ -230,10 +230,7 @@ console.log("[utilizador] utilizador = " + JSON.stringify(games));
 
 let html = "";
 
-for(let game of games){
- console.log("Jogo: " + game); //PORQUE DÁ ERRO?
- html += creategameoneHTML(game);
-}
+html += creategameoneHTML(games);
 
 
 console.log("OBTEVE");
