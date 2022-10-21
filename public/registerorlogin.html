@@ -54,7 +54,7 @@
                     <a href="#" class="forgot-pass">Esqueci-me da password</a>
                 </div>
 
-                <a href="secondpagetest.html">
+                <a>
                     <input class="field button-field" type="button" onclick="login()" value="LOGIN" style="border: 0px; background-color: blue; color: white;">
                 </a>
             </form>
@@ -114,6 +114,8 @@
 
            async function login() {
 
+            
+
               console.log("Função Login chamada...");
 
               try{
@@ -147,6 +149,8 @@
                 sessionStorage.setItem('utilizador_pass', authUser.utilizador_pass);
                
                 console.log(authUser.utilizador_id);
+
+                window.location.replace("http://localhost:3000/secondpagetest.html");
         } catch(err){
 
             console.log(err);
