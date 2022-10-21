@@ -42,16 +42,12 @@ const corsOptions = {
    credentials: true,
    optionSucessStatus: 200
 }
-const port = 8000
+const port = 3000
 
 
 app.get('/', (req, res) => res.send('Server is Upp!'))
 
-app.get('/testsmsauthentication', (req, res) => {
 
-   res.render('twoauthenticationtest.html', {message: 'hello world!'})
-
-})
 
 app.use(cors(corsOptions));
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
