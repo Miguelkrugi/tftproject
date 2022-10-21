@@ -21,9 +21,26 @@ const nunjucks = require('nunjucks')
 const Nexmo = require('nexmo')
 const app = express()
 
+//NEW CODE TO COUNT USERS
+const http = require('http').createServer(app)
+const io = require('socket.io')(http)
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
 nunjucks.configure('views', {express: app})
+
+//Conexão e desconexão de utilizadores | Vai ser ligada a uma pagina WEB
+
+io.on('connection', function(socket) {
+
+   console.log("A user connected");
+
+   socket.on('disconnect', function(){
+
+     console.log("A user disconnected");
+
+   })
+})
 
 
 const nexmo = new Nexmo({
@@ -45,7 +62,23 @@ const corsOptions = {
 const port = 3000
 
 
-app.get('/', (req, res) => res.send('Server is Upp!'))
+//app.get('/', (req, res) => res.send('Server is Upp!'))
+
+
+
+//Acesso ás webpages
+
+app.get("/", function(req, res) {
+
+   res.sendFile(__dirname+"/public/wishlist.html")
+   
+})
+
+app.get("/inicial", function(req, res) {
+
+   
+
+})
 
 
 
