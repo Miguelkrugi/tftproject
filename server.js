@@ -16,8 +16,24 @@ const corsOptions ={
 app.use(cors(corsOptions));*/
 
 const express = require('express')
-
+const bodyParser = require('body-parser')
+const nunjucks = require('nunjucks')
+const Nexmo = require('nexmo')
 const app = express()
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: false}))
+nunjucks.configure('views', {express: app})
+
+
+const nexmo = new Nexmo({
+
+   apiKey: 'abce5639',
+   apiSecret: 'L5FRitSR5lH6RGpP'
+
+})
+
+///////////OTHER CODE//////////
 
 const cors = require('cors');
 
@@ -30,6 +46,12 @@ const port = 8000
 
 
 app.get('/', (req, res) => res.send('Server is Upp!'))
+
+app.get('/testsmsauthentication', (req, res) => {
+
+   res.render('twoauthenticationtest.html', {message: 'hello world!'})
+
+})
 
 app.use(cors(corsOptions));
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
