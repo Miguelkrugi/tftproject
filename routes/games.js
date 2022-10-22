@@ -25,6 +25,24 @@ router.get('/mostdownloaded', async function(req, res, next) {
 
 });
 
+//OBTER TODAS AS PLATAFORMAS
+
+router.get('/allplataforms', async function(req, res, next) {
+
+  let result = await gamesModel.getPlatforms();
+  res.status(result.status).send(result.data);
+
+});
+
+router.get('/allplataforms/verify/:idutilizador/:idplataforma', async function(req, res, next) {
+
+  let idutilizador = req.params.idutilizador;
+  let idplataforma = req.params.idplataforma;
+  console.log("Retrieving games with id " + idutilizador + " and game with id: " + idplataforma);
+  let result = await gamesModel.getPlatformasVerify(idutilizador, idplataforma);
+  res.status(result.status).send(result.data);
+
+});
 
   
 /*router.get('/allgeneros', async function(req, res, next) {

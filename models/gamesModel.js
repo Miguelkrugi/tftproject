@@ -22,6 +22,22 @@ module.exports.getGames = async function() {
     }
 }
 
+///// GET PLATFORMS
+
+module.exports.getPlatforms = async function() {
+    try {
+        let sql = "SELECT * FROM plataforma"; 
+        let result = await pool.query(sql);
+        let games = result.rows;
+        console.log("[gamesModel.getGames] games = " + JSON.stringify(games));
+        return { status: 200, data: games };
+    } catch (err) {
+        console.log(err);
+        return { status: 500, data: err };
+    }
+}
+
+
 module.exports.getGamesBest = async function() {
     try {
         let sql = "SELECT * FROM jogo ORDER BY jogo.jogo_rating DESC"; 
@@ -484,6 +500,19 @@ module.exports.getGamesRankingDesc = async function() {
 module.exports.getGamesVerify = async function(utilizador_id, jogo_id) {
     try {
         let sql = "SELECT * FROM favorito WHERE favorito.favorite_user_id = " + utilizador_id + " AND favorito.favorite_jogo_id = " + jogo_id;
+        let result = await pool.query(sql);
+        let gamesfound = result.rows;
+        console.log("[gamesModel.getGamesFromGenre] gamesfavorite = " + JSON.stringify(gamesfound));
+        return { status: 200, data: gamesfound };
+    } catch (err) {
+        console.log(err);
+        return { status: 500, data: err };
+    }
+}
+
+module.exports.getPlatformasVerify = async function(utilizador_id, plataforma_id) {
+    try {
+        let sql = "SELECT * FROM plataforma_follow WHERE plataforma_user_id =" + utilizador_id + " AND plataforma_identifier = " + plataforma_id;
         let result = await pool.query(sql);
         let gamesfound = result.rows;
         console.log("[gamesModel.getGamesFromGenre] gamesfavorite = " + JSON.stringify(gamesfound));

@@ -7,6 +7,8 @@
 
   <script src="https://kit.fontawesome.com/15e6590408.js" crossorigin="anonymous"></script>
 
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
   <a href="secondpagetest.html" style="">
 
     <img src="./images/tftlogo-removebg-preview.png" style="width: 8%; height: 19%; position:absolute; margin-top: -3.4%;">
@@ -48,7 +50,34 @@
 
     <div id="platformssection">
 
-        <!--HAVERÁ AQUI UMA FUNÇÃO DE GET DAS PLATAFORMAS EM BOTÃO (PARA SEGUIR)-->
+      <!--COMO FUNCIONARÁ ?
+      
+      1. EXISTE INICIALMENTE UM GET QUE OBTERÁ TODAS AS PLATAFORMAS DE JOGOS DISPONIVEIS
+
+      2. PARA CADA LOOP DE RESULTADOS, É RETIRADO O ID DO USER LOGGADO E O ID DA PLATAFORMA NO LOOP.
+
+      3. AINDA NUMA POSIÇÃO DO LOOP, É FEITA UMA VERIFICAÇÃO DE MODO A VERIFICAR SE UM ITEM COM O ID DO UTILIZADOR E O ID DA PLATAFORMA NO LOOP ATUAL EXISTE NA TABELA INTERMÉDIA
+
+      4. SE SIM, A PLATAFORMA DESSA POSIÇÃO SERÁ GERADA COM UM BOTÃO DE 'DEIXAR DE SEGUIR'
+
+      5. CASO CONTRÁRIO, A PLATAFORMA DESSA POSIÇÃO SERÁ GERADA COM UM BOTÃO 'SEGUIR'
+
+      6. UM BOTÃO DE SEGUIR REALIZA UM POST PARA A TABELA INTERMÉDIA, ATRAVÉS DO ID DO UTILIZADOR LOGGADO E DA PLATAFORMA.
+
+      7. UM BOTÃO DE DEIXAR DE SEGUIR REALIZA UM MÉTODO DELETE DA TABELA INTERMÉDIA.
+
+      ---------------------------------------------
+
+
+      
+      
+      -->
+
+      
+
+
+
+        <!--HAVERÁ AQUI UMA FUNÇÃO DE GET DAS PLATAFORMAS EM BOTÃO (PARA SEGUIR)
 
         <div id="platformsicons">
 
@@ -114,7 +143,7 @@
 
             </div>
 
-        </div>
+        </div>-->
 
 
 
@@ -200,6 +229,11 @@
  
          </nav>
 
+         <div id="organize10">
+
+        
+        </div>
+
          <script>
 
           //FUNCAO DE QUANDO A PAGINA ABRIR. É EXTREMAMENTE IMPORTANTE ADAPTAR O ESTILO DOS BOTÕES AS PLATAFORMAS QUE JÁ SÃO SEGUIDAS OU NÃO.
@@ -211,7 +245,9 @@
             var utilizador_email = sessionStorage.getItem("utilizador_email");
             var utilizador_id = sessionStorage.getItem("utilizador_id");
 
-            //COMO FUNCIONA A ADAPTAÇÃO ? -> SÃO BUSCADOS AS PLATAFORMAS SEGUIDAS POR UM USER. OS RESULTADOS OBTIDOS ADAPTAM O BOTÃO PARA O 'Deixar de seguir'. Os restantes adaptam o botão 'Seguir'.
+            getAllPlatforms();
+
+            /*COMO FUNCIONA A ADAPTAÇÃO ? -> SÃO BUSCADOS AS PLATAFORMAS SEGUIDAS POR UM USER. OS RESULTADOS OBTIDOS ADAPTAM O BOTÃO PARA O 'Deixar de seguir'. Os restantes adaptam o botão 'Seguir'.
 
             document.getElementById("followpcandlaptop").style.visibility = "hidden";
 
@@ -235,12 +271,71 @@
 
                 document.getElementById("followandroid").style.visibility = "hidden";
 
-                document.getElementById("unfollowandroid").style.visibility = "hidden";
+                document.getElementById("unfollowandroid").style.visibility = "hidden";*/
 
 
                 //A TERMINAR...
 
           }
+
+          //PASSO 1 -> OBTER TODAS AS PLATAFORMAS DE JOGO DISPONIVEIS
+
+          async function getAllPlatforms(){
+
+console.log("Obtendo todas as plataformas")
+
+// let recipeName = document.getElementById("nome1")
+ let platformsElem = document.getElementById("organize10");
+ var utilizador_id = sessionStorage.getItem("utilizador_id");
+ console.log("setItem->userId = " + utilizador_id);
+
+try{
+
+let games = await $.ajax({
+
+url: "/games/allplataforms/",
+method: "get",
+dataType: "json",
+
+});
+
+console.log("[utilizador] utilizador = " + JSON.stringify(games));
+
+let htmlnotmarked = "";
+
+let htmlmarked = "";
+
+for(let game of games){
+ console.log("Jogo: " + game); 
+
+ var utilizador_identifier = sessionStorage.getItem("utilizador_id");
+ var plataforma_identifier = game.plataforma_id
+
+ /////////////////////// VERIFICAR A EXISTÊNCIA DE UMA PLATAFORMA A SER SEGUIDA ATUALMENTE. FAZ SE A PESQUISA E SE RETORNAR 1 UNICA LINHA, É PORQUE EXISTE /////////////////////////
+
+ let games = await $.ajax({
+
+  url: "/games/allplataforms/verify/",
+  method: "get",
+  dataType: "json",
+
+ });
+
+ ///////////////////7777TERMINAR
+
+ ///////////////////////////////////////////////////////////html += createlibraryHTML(game);
+}
+
+console.log("OBTEVE");
+//  recipeName.innerHTML = html;
+
+///////////////////////////////////////////////////////////////gamesElem.innerHTML = html;
+
+
+} catch(err){
+ console.log(err);
+}
+}
 
           //FOLLOW AND UNFOLLOW BUTTON CLICKS
 

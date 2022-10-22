@@ -183,16 +183,19 @@
 
          <script>
 
-        window.onload = function exampleFunction() {
+        window.onload = async function() {
             console.log('The Script will load now.');
+            
 
             var utilizador_name = sessionStorage.getItem("utilizador_name");
             var utilizador_dinheiro = sessionStorage.getItem("utilizador_dinheiro");
 
+            console.log(utilizador_name);
 
-            document.getElementById("hellouser").innerHTML = "Olá, " + utilizador_name + " !";
 
-            document.getElementById("tokensuser").innerHTML = "Tokens: " + utilizador_dinheiro;
+           // document.getElementById("hellouser").innerHTML = "Olá, " + utilizador_name + " !";
+
+           // document.getElementById("tokensuser").innerHTML = "Tokens: " + utilizador_dinheiro;
 
             getGamesLatest();
 

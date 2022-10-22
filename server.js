@@ -55,11 +55,11 @@ const nexmo = new Nexmo({
 const cors = require('cors');
 
 const corsOptions = {
-   origin: 'http://localhost:3000',
+   origin: 'http://localhost:2000',
    credentials: true,
    optionSucessStatus: 200
 }
-const port = 3000
+const port = 2000
 
 
 //app.get('/', (req, res) => res.send('Server is Upp!'))
