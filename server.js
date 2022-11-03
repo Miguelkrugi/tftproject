@@ -24,12 +24,27 @@ const app = express()
 //NEW CODE TO COUNT USERS
 const http = require('http').createServer(app)
 const io = require('socket.io')(http)
+const http2 = require('http').createServer(app);
+const io2 = require('socket.io')(http2)
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
 nunjucks.configure('views', {express: app})
 
 //Conexão e desconexão de utilizadores | Vai ser ligada a uma pagina WEB
+
+io2.on('connection', function(socket2) {
+
+   console.log("A user connected to this page");
+
+   socket2.on('disconnect', function() {
+
+      console.log("A user disconnected");
+
+   })
+
+
+})
 
 io.on('connection', function(socket) {
 
@@ -53,6 +68,7 @@ const nexmo = new Nexmo({
 ///////////OTHER CODE//////////
 
 const cors = require('cors');
+const { isFloat32Array } = require('util/types')
 
 const corsOptions = {
    origin: 'http://localhost:2000',

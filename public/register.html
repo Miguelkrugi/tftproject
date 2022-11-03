@@ -57,7 +57,7 @@
                 <!--onclick="registreamento()" NO BOTÃO-->
 
 
-                <a href="secondpagetest.html">
+                <a href="#">
                     <input class="field button-field" type="button" onclick="registreamento()" value="REGISTA" style="border: 0px; background-color: blue; color: white;">
                 </a>
 
@@ -122,14 +122,22 @@
      <!---   <script src="javascripts/script.js"></script> -->
 
      <script>
-        //import bcrypt from 'bcrypt'; 
-        
 
+          const bcrypt = require('bcrypt'); 
+
+          const myPlainedPassword = document.getElementById("fpassword").value;
+        const hashpassword = bcrypt.hashSync(myPlainedPassword, 5);
+        console.log(myPlainedPassword + "=" + hashpassword) 
+
+        
+        //import bcrypt from 'bcrypt'
+        
+        // COMEÇA AQUI O COMENTARIO
         async function registreamento() {
 
-        
+            
 
-            console.log("Storing...");
+           console.log("Storing...");
          
          
 
@@ -137,9 +145,8 @@
 
           try {
 
-           // const bcrypt = require('bcrypt'); --> *************************TIRAR DUVIDA**************************************
-
-          
+            
+            
 
             const saltRounds = 10;
 
