@@ -15,6 +15,10 @@
 
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 
+    <script src="./javascripts/user.js"></script>
+
+    <script src="/tftproject/models/usersModel.js"></script>
+
 
 
      <!-- Boxicons CSS -->
@@ -112,52 +116,7 @@
 
         <script>
 
-           async function login() {
-
-            
-
-              console.log("Função Login chamada...");
-
-              try{
-
-              let object = {
-
-                 utilizador_name: document.getElementById("fusernamelogin").value,
-                 utilizador_password: document.getElementById("fpasswordlogin").value
-
-              };
-
-              console.log("Sending the object with values: " + object);
-
-              let authUser = await $.ajax({
-               url: "/users/loginuser",
-               method: "post",
-               data: JSON.stringify(object),
-               contentType: "application/json",
-               dataType: "json",
-
-            });
-
-                console.log("Verifying user with username: " + authUser.utilizador_name + " and password: " + authUser.utilizador_password);
-
-
-                sessionStorage.setItem('utilizador_id', authUser.utilizador_id);
-                sessionStorage.setItem('utilizador_name', authUser.utilizador_name);
-                sessionStorage.setItem('utilizador_password', authUser.utilizador_password);
-                sessionStorage.setItem('utilizador_email', authUser.utilizador_email);
-                sessionStorage.setItem('utilizador_dinheiro', authUser.utilizador_dinheiro);
-                sessionStorage.setItem('utilizador_pass', authUser.utilizador_pass);
-               
-                console.log(authUser.utilizador_id);
-
-                window.location.replace("http://localhost:2000/secondpagetest.html");
-        } catch(err){
-
-            console.log(err);
-
-        }
-
-           }
+          
 
 
 
