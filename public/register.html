@@ -13,7 +13,9 @@
     <!-- custom css -->
     <link rel = "stylesheet" href = "stylesheets/registerlogin.css">
 
-    <script src="javascripts/user.js"></script>
+    <script src="./javascripts/user.js"></script>
+
+    <script src="/tftproject/models/usersModel.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     
@@ -58,7 +60,7 @@
 
 
                 <a href="#">
-                    <input class="field button-field" type="button" onclick="registreamento()" value="REGISTA" style="border: 0px; background-color: blue; color: white;">
+                    <input class="field button-field" type="button" onclick="registreamento()" value="REGISTAR" style="border: 0px; background-color: blue; color: white;">
                 </a>
 
             
@@ -122,81 +124,8 @@
      <!---   <script src="javascripts/script.js"></script> -->
 
      <script>
-
-          const bcrypt = require('bcrypt'); 
-
-          const myPlainedPassword = document.getElementById("fpassword").value;
-        const hashpassword = bcrypt.hashSync(myPlainedPassword, 5);
-        console.log(myPlainedPassword + "=" + hashpassword) 
-
         
-        //import bcrypt from 'bcrypt'
-        
-        // COMEÇA AQUI O COMENTARIO
-        async function registreamento() {
-
-            
-
-           console.log("Storing...");
-         
-         
-
-          console.log("Registering user...");
-
-          try {
-
-            
-            
-
-            const saltRounds = 10;
-
-            var utilizador_dinheiro_base = 500;
-
-            //const hash = await bcrypt.hash(document.getElementById("fpassword").value, saltRounds) --> DUVIDA********************************************++
-
-            /*bcrypt.genSalt(saltRounds, function(err, salt) {
-
-               var password_encrypted = bcrypt.hash(document.getElementById("fpassword").value, salt, function(err, hash){});
-
-               return password_encrypted;
-
-            });*/
-
-            let data = {
-
-              utilizador_name: document.getElementById("fusername").value,
-              utilizador_password: document.getElementById("fpassword").value,
-              utilizador_email: document.getElementById("femail").value,
-              utilizador_dinheiro: utilizador_dinheiro_base,
-              //utilizador_pass: hash --> DUVIDA*************************************************
-              utilizador_pass: "djsfkdsdee2ASDJSshad2732"
-
-            }
-
-            let newUser = await $.ajax({
-
-                url: "/users/insertnewuser",
-                method: "post",
-                data: JSON.stringify(data),
-                contentType: "application/json",
-                dataType: "json"
-
-                
-            });
-            
-          } catch (err) {
-            
-              console.log(err);
-
-          }
-
-          console.log("Stored...");
-
-          //var utilizador_name = sessionStorage.setItem("utilizador_name", )
-
-
-
-        }
+       
 
        /* function hashpassword(){
 

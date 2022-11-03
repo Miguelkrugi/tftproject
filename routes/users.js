@@ -49,10 +49,10 @@ router.post('/insertnewuser', async function(req, res, next) {
 /*Login de utilizador - VERIFICAR POSTERIORMENTE SE FUNCIONA CORRETAMENTE*/
 
 router.post('/loginuser', async function(req, res, next){
-  let username = req.body;
-  console.log("username = " + JSON.stringify(username));
+  let user = req.body;
+  console.log("username = " + JSON.stringify(user));
 
-  let result = await usersModel.authUser(username);
+  let result = await usersModel.authUser(user);
   res.status(result.status).send(result.result);
 
 });
