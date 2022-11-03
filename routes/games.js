@@ -34,6 +34,14 @@ router.get('/allplataforms', async function(req, res, next) {
 
 });
 
+router.get('/allplataforms/verified/:idutilizador', async function(req, res, next) {
+
+  let idutilizador = req.params.idutilizador;
+  let result = await gamesModel.getPlatformsVerified(idutilizador);
+  res.status(result.status).send(result.data);
+
+});
+
 router.get('/allplataforms/verify/:idutilizador/:idplataforma', async function(req, res, next) {
 
   let idutilizador = req.params.idutilizador;

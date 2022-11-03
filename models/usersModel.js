@@ -111,27 +111,31 @@ module.exports.getUserDetails = async function(user_id) {
 
 //LOGIN USER
 
-module.exports.authUser = async function(uti_name){
+module.exports.authUser = async function(user){
 
     try {
         let sql = "SELECT * FROM utilizador where utilizador_name = $1";
 
-        let result = await pool.query(sql,[uti_name.utilizador_name]);
+        let result = await pool.query(sql,[user.utilizador_name]);
 
         console.log("authUser.result.rows = " + JSON.stringify(result.rows));
 
         let passwordb = result.rows[0].utilizador_password;
 
-        let insertedpassword = bcrypt.hashSync(uti_name.utilizador_password, salt);
-        console.log("INSERTED: " + insertedpassword);
-        console.log("authUser.passwordb = " + JSON.stringify(passwordb));
-        console.log("authUser.uti_name.user_password = " + JSON.stringify(uti_name.utilizador_password));
+       // let insertedpassword = bcrypt.hashSync(user.utilizador_password, salt);
+       // console.log("INSERTED: " + insertedpassword);
+       // console.log("authUser.passwordb = " + JSON.stringify(passwordb));
+       // console.log("authUser.uti_name.user_password = " + JSON.stringify(user.utilizador_password));
 
-        console.log("TEST PASSWORD: " + ins);
+       // console.log("TEST PASSWORD: " + ins);
 
-        console.log("PASSWORD: " + passwordb);
+       // console.log("PASSWORD: " + passwordb);
 
-        let valor = bcrypt.compareSync(uti_name.utilizador_password == passwordb);
+       let valor = bcrypt.compareSync(user.utilizador_password, passwordb); 
+
+  
+
+
 
       //  let valor = (uti_name.utilizador_password == passwordb);
 

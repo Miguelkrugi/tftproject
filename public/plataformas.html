@@ -301,12 +301,29 @@ dataType: "json",
 
 });
 
+//GET DE PLATAFORMAS VERIFICADAS
+
+let gamesverified = await $.ajax({
+
+url: "/games/allplatforms/verified/" + utilizador_id,
+method: "get",
+dataType: "json",
+  
+});
+
+for(let gameverified of gamesverified) {
+
+  console.log("Verified Platforms: " + gameverified);
+
+}
+
 console.log("[utilizador] utilizador = " + JSON.stringify(games));
 
 let htmlnotmarked = "";
 
 let html = "";
 
+//IRÁ SER COLOCADO 1 FOR PARA VERIFICAR SE EXISTE ALGUMA PLATAFORMA JÁ SEGUIDA. SE SIM, ADAPTA UM DETERMINADO HTML, CASO CONTRÁRIO, ADAPTA OUTRO HTML (COM OUTRO BOTÃO)
 for(let game of games){
  console.log("Jogo: " + game); 
 

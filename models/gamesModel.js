@@ -523,6 +523,19 @@ module.exports.getPlatformasVerify = async function(utilizador_id, plataforma_id
     }
 }
 
+module.exports.getPlatformsVerified = async function(utilizador_id) {
+    try {
+        let sql = "SELECT plataforma_follow.plataforma_id_follow, plataforma_follow.plataforma_user_id, plataforma_follow.plataforma_identifier, utilizador.utilizador_id, utilizador.utilizador_name, utilizador.utilizador_email, plataforma.plataforma_id, plataforma.plataforma_name FROM plataforma_follow INNER JOIN utilizador ON utilizador.utilizador_id = plataforma_follow.plataforma_user_id INNER JOIN plataforma ON plataforma.plataforma_id = plataforma_follow.plataforma_identifier WHERE utilizador.utilizador_id = " + utilizador_id;
+        let result = await pool.query(sql);
+        let gamesfoundverified = result.rows;
+        console.log("[gamesModel.getGamesFromGenre] gamesfavorite = " + JSON.stringify(gamesfoundverified));
+        return { status: 200, data: gamesfoundverified };
+    } catch (err) {
+        console.log(err);
+        return { status: 500, data: err };
+    }
+}
+
 module.exports.getGamesFavorito = async function(utilizador_id) {
     try {
         let sql = "SELECT favorito.favorite_user_id, favorito.favorite_jogo_id, utilizador.utilizador_id, utilizador.utilizador_name, jogo.jogo_name, jogo.jogo_rating, jogo.jogo_downloads, jogo_genero.jogo_genero_id, jogo_genero.game_id, jogo_genero.genre_id, genero.id_genero, genero.name_genero FROM favorito INNER JOIN utilizador ON utilizador.utilizador_id = favorito.favorite_user_id INNER JOIN jogo ON jogo.jogo_id = favorito.favorite_jogo_id INNER JOIN jogo_genero ON jogo_genero.game_id = jogo.jogo_id INNER JOIN genero ON genero.id_genero = jogo_genero.genre_id WHERE utilizador.utilizador_id = " + utilizador_id;
