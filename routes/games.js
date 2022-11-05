@@ -160,6 +160,12 @@ router.get('/games/favorite/:idutilizador', async function(req, res, next) {
     res.status(result.status).send(result.result);
   });
 
+  router.post('/followplatform', async function(req, res, next) {
+    let newGame = req.body;
+    //console.log("[usersRoutes] Saving user " + JSON.stringify(newUser));
+    let result = await gamesModel.saveGamePlatform(newGame);
+    res.status(result.status).send(result.result);
+  });
   
   //GET LIBRARY GAMES
 
@@ -241,6 +247,15 @@ router.delete('/deletefavorite/:idfavorite', async function(req, res, next){ //C
   let favorite_id = req.params.idfavorite;
   console.log("[artigosRoutes] Deleting favorite game with id: " + favorite_id);
   let result = await gamesModel.deleting(favorite_id);
+  res.status(result.status).send(result.data);
+
+});
+
+router.delete('/unfollowplatform/:idplatformfollow', async function(req, res, next){ //COMO RESOLVER?
+
+  let idplatform_follow = req.params.idplatformfollow;
+  console.log("[artigosRoutes] Deleting favorite game with id: " + idplatform_follow);
+  let result = await gamesModel.deletingFollowPlatform(idplatform_follow);
   res.status(result.status).send(result.data);
 
 });

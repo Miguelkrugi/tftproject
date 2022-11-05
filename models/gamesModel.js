@@ -385,6 +385,21 @@ module.exports.deleting = async function(favorite_id) {
     }
 }
 
+module.exports.deletingFollowPlatform = async function(platform_follow_id) {
+    try {
+
+        console.log("Calling SQL query");
+        let sql = "DELETE FROM plataforma_follow WHERE plataforma_follow.plataforma_id_follow= " + platform_follow_id;
+        let result = await pool.query(sql);
+        let gamesfound = result.rows;
+        console.log("[gamesModel.getGamesFromGenre] gameswishlist = " + JSON.stringify(gamesfound));
+        return { status: 200, data: gamesfound };
+    } catch (err) {
+        console.log(err);
+        return { status: 500, data: err };
+    }
+}
+
 
 module.exports.getGamesRankingAsc = async function() {
     try {
@@ -471,6 +486,36 @@ module.exports.saveGame = async function(jogo) {
 
             //console.log(user.user_name + "|" + user.user_password + "|" + user.user_morada + "|" + user.user_email + "|" + user.user_points + "|" + user.user_admin + "|" + user.user_pt + "|" + user.user_nutri);
         let result = await pool.query(sql, [jogo.jogo_name, jogo.jogo_released, jogo.jogo_rating, jogo.jogo_preco, jogo.jogo_downloads, jogo.jogo_desc, jogo.jogo_link]);
+        
+        return { status: 200, result: result };
+    } catch (err) {
+
+        console.log(err);
+        return { status: 500, result: err };
+    }
+}
+
+module.exports.saveGamePlatform = async function(jogo) {
+    //console.log("[usersModel.saveUser] user = " + JSON.stringify(user));
+     //checks all fields needed and ignores other fields
+    /*if (typeof user != "object" || failUser(user)) {
+        if (user.errMsg)
+            return { status: 400, data: { msg: user.errMsg } };
+        else
+            return { status: 400, data: { msg: "Malformed data" } };
+    }
+    let password = brcypt.hashSync(user.user_password, salt);*/
+    try {
+
+        let sql =
+            "INSERT " +
+            "INTO plataforma_follow " +
+            "(plataforma_user_id, plataforma_identifier) " +
+            "VALUES ($1, $2) " +
+            "RETURNING plataforma_id_follow";
+
+            //console.log(user.user_name + "|" + user.user_password + "|" + user.user_morada + "|" + user.user_email + "|" + user.user_points + "|" + user.user_admin + "|" + user.user_pt + "|" + user.user_nutri);
+        let result = await pool.query(sql, [jogo.plataforma_user_id, jogo.plataforma_identifier]);
         
         return { status: 200, result: result };
     } catch (err) {

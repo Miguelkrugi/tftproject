@@ -305,17 +305,14 @@ dataType: "json",
 
 let gamesverified = await $.ajax({
 
-url: "/games/allplatforms/verified/" + utilizador_id,
+url: "/games/allplataforms/verified/" + utilizador_id,
 method: "get",
 dataType: "json",
   
 });
 
-for(let gameverified of gamesverified) {
 
-  console.log("Verified Platforms: " + gameverified);
-
-}
+console.log("[utilizador] utilizador= " + JSON.stringify(gamesverified));
 
 console.log("[utilizador] utilizador = " + JSON.stringify(games));
 
@@ -325,31 +322,44 @@ let html = "";
 
 //IRÁ SER COLOCADO 1 FOR PARA VERIFICAR SE EXISTE ALGUMA PLATAFORMA JÁ SEGUIDA. SE SIM, ADAPTA UM DETERMINADO HTML, CASO CONTRÁRIO, ADAPTA OUTRO HTML (COM OUTRO BOTÃO)
 for(let game of games){
- console.log("Jogo: " + game); 
+
+  for(let gameverified of gamesverified) {
+
+console.log("Verified Platforms: " + gameverified);
+
+ if(game.plataforma_id == gameverified.plataforma_identifier){
+
+  html += createplatformHTMLVerified(gameverified);
+
+//  break;
+
+ } else {
+
+  console.log("Nothing to show here...");
+  break;
+
+ }
+
+
+ console.log("VERIFIED: " + gameverified.plataforma_name)
+
+ console.log("Jogo: " + game.plataforma_name); 
 
  var utilizador_identifier = sessionStorage.getItem("utilizador_id");
  var plataforma_identifier = game.plataforma_id;
- html += createplatformHTML(game);
+ 
+  }
 
+  html += createplatformHTML(game);
 
- /////////////////////// VERIFICAR A EXISTÊNCIA DE UMA PLATAFORMA A SER SEGUIDA ATUALMENTE. FAZ SE A PESQUISA E SE RETORNAR 1 UNICA LINHA, É PORQUE EXISTE /////////////////////////
+  
 
-/* let games = await $.ajax({
-
-  url: "/games/allplataforms/verify/",
-  method: "get",
-  dataType: "json",
-
- });*/
-
- ///////////////////7777TERMINAR
-
- ///////////////////////////////////////////////////////////html += createlibraryHTML(game);
 }
 
 console.log("OBTEVE");
 
 platformsElem.innerHTML = html;
+
 //  recipeName.innerHTML = html;
 
 ///////////////////////////////////////////////////////////////gamesElem.innerHTML = html;
@@ -360,13 +370,74 @@ platformsElem.innerHTML = html;
 }
 }
 
+function createplatformHTMLVerified(jogo){
+
+return "<div class='selectbox88' id='selectbox88'>" + "<h1 style='color: black; margin-left:2%; margin-top:2.6%; color:red;'><b>" + jogo.plataforma_name + "</b></h1>" + "<button style='margin-top: 22.5%; visibility: hidden;  margin-left: 60%;' onclick='followplatform(" + JSON.stringify(jogo) + ")' id='followbutton'>" + "SEGUIR" + "</button>" + "<button style='margin-top: -9.5%;   margin-left: 30%;' onclick='unfollowplatform(" + JSON.stringify(jogo) + ")' id='unfollowbutton'>" + "N. SEGUIR" + "</button>" + "</div>"
+
+}
 
 
 function createplatformHTML(jogo){
 
-return "<div class='selectbox88' id='selectbox88'>" + "<h1 style='color: black; margin-left:2%; margin-top:2.6%;'><b>" + jogo.plataforma_name + "</b></h1>" + "<button style='margin-top: 22.5%; visibility:hidden; margin-left: 60%; ' id='followbutton'>" + "SEGUIR" + "</button>" + "<button style='margin-top: -9.5%; visibility: hidden; margin-left: 30%;' id='unfollowbutton'>" + "N. SEGUIR" + "</button>" + "</div>"
+return "<div class='selectbox88' id='selectbox88'>" + "<h1 style='color: black; margin-left:2%; margin-top:2.6%;'><b>" + jogo.plataforma_name + "</b></h1>" + "<button style='margin-top: 22.5%; margin-left: 60%;' onclick='followplatform(" + JSON.stringify(jogo) + ")' id='followbutton'>" + "SEGUIR" + "</button>" + "<button style='margin-top: -9.5%; visibility: hidden; margin-left: 30%;' onclick='unfollowplatform(" + JSON.stringify(jogo) + ")' id='unfollowbutton'>" + "N. SEGUIR" + "</button>" + "</div>"
 
 }
+
+async function unfollowplatform(jogo){
+
+try {
+
+ let games = await $.ajax({
+
+   url: "/games/unfollowplatform/" + jogo.plataforma_id_follow,
+   method: "delete",
+   dataType: "json",
+
+});
+
+console.log("Platform Game with id: " + jogo.plataforma_id_follow);
+
+} catch (err){
+ console.log(err);
+}
+
+
+}
+
+async function followplatform(jogo){
+
+  try {
+
+    var utilizador_identifier = sessionStorage.getItem("utilizador_id");
+
+     let data = {
+
+      plataforma_user_id: utilizador_identifier,
+      // wishlist_jogo_id: jogo_id
+      plataforma_identifier: jogo.plataforma_id,
+
+     }
+
+     let newWishlistGame = await $.ajax({
+
+      url: "/games/followplatform",
+      method: "post",
+      data: JSON.stringify(data),
+      contentType: "application/json",
+      dataType: "json"
+
+
+      });
+      console.log(newWishlistGame);
+ 
+ } catch (err) {
+ 
+ console.log(err);
+
+}
+}
+
+
 
           //FOLLOW AND UNFOLLOW BUTTON CLICKS
 
