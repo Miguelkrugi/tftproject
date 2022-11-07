@@ -540,7 +540,7 @@ height: 100%;
   width: 90%;
   height: 42%;
   position: absolute;
-  background-color: #737373;
+  background-color: transparent;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
