@@ -4,9 +4,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var gamesRouter = require('./routes/games');
+var indexRouter = require('../tftproject/routes/index');
+var usersRouter = require('../tftproject/routes/users');
+var gamesRouter = require('../tftproject/routes/games');
 
 var app = express();
 //NEW ADITIONS

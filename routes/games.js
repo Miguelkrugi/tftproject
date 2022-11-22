@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var gamesModel = require('../models/gamesModel');
+var gamesModel = require('../../models/gamesModel');
 
 /*VER ALGUNS JOGOS NA PÁGINA PRINCIPAL*/
 
